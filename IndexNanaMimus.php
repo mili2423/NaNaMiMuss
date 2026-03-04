@@ -52,7 +52,10 @@ $items_iniciales = $fila_cont['total'] ?? 0;
                         <h4 style="margin: 10px 0 5px 0; font-size: 0.95rem; color: #333;"><?php echo $producto['nombre']; ?></h4>
                         <p style="color: #ff409f; font-weight: bold; margin: 0 0 12px 0;">$<?php echo number_format($producto['precio'], 2); ?></p>
                         
-                        <button onclick="ejecutarCarrito('agregar', <?php echo $producto['id']; ?>)" style="background:#ff409f; color:white; padding:8px 16px; border-radius:20px; border:none; cursor:pointer; font-size:13px; font-weight: 500; display: inline-block;">+ Agregar</button>
+                      <button onclick="ejecutarCarrito('agregar', <?php echo $producto['id']; ?>)" 
+        style="background: #ff409f; color: white; width: 100%; padding: 12px 0; border-radius: 12px; border: none; cursor: pointer; font-size: 0.9rem; font-family: 'Poppins', sans-serif; font-weight: 600; transition: background 0.2s;">
+    Agregar al carrito
+</button>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
@@ -62,16 +65,26 @@ $items_iniciales = $fila_cont['total'] ?? 0;
     </main>
   </div>
 
-  <div class="carrito-sidebar hidden" id="sidebarCarrito">
-    <button class="close-btn" id="close-cart-btn">&times;</button>
+ <div class="carrito-sidebar hidden" id="sidebarCarrito">
+    
+    <div class="popup-container">
+        
+        <div class="carrito-header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-cart-shopping" style="color: #ff409f; font-size: 1.2rem;"></i>
+                <h2 style="margin: 0; font-size: 1.2rem; color: #333; font-family: 'Poppins', sans-serif;">Mi Carrito</h2>
+                <span class="badge" id="cart-badge-count">0 items</span>
+            </div>
+            <button class="close-btn" id="close-cart-btn">&times;</button>
+        </div>
 
-    <div id="wrapper-dinamico-carrito" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
+        <div id="wrapper-dinamico-carrito" style="width: 100%; display: flex; flex-direction: column; flex: 1; overflow: hidden;"></div>
+
+    </div>
+
 </div>
 
   <script src="productos.js"></script>
-  <script src="index.js"></script>
-  <script src="favoritos.js"></script>
-  
   <script src="carrito.js"></script>
 </body>      
 <div id="footer"></div>           
