@@ -23,60 +23,7 @@ $items_iniciales = $fila_cont['total'] ?? 0;
     <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
 </head>
 <body>
-
-  <div class="navfija">
-    <div class="navbar">
-        <div class="navbar-left">
-            <a href="indexNanaMimus.php">
-                <img src="NanaMimus/logotipo.jpg" alt="Logo Nana Mimus" class="logo-redondo-tienda">
-            </a>
-        </div>
-
-        <div class="navbar-search">
-            <form action="indexNanaMimus.php" method="GET" class="search-form">
-                <input type="text" name="buscar" placeholder="¿Qué estás buscando?..." value="<?php echo isset($_GET['buscar']) ? htmlspecialchars($_GET['buscar']) : ''; ?>">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-        </div>
-
-        <div class="navbar-right-container">
-            <a href="preguntasfrecuentes.php" class="btn-ayuda">Ayuda</a>
-            <div class="navbar-icons">
-    <div class="icon-container">
-        <a href="#" onclick="toggleFavoritos()">
-            <i class="fa-regular fa-heart"></i>
-        </a>
-        <span class="badge-contador" id="contadorFavoritos">0</span>
-    </div>
-
-    <div class="icon-container">
-        <a href="#" id="cart-icon-btn">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </a>
-        <span class="badge-contador" id="contadorCarrito"><?php echo $items_iniciales; ?></span>
-    </div>
-
-    <div class="icon-container">
-        <a href="iniciosesion.html">
-            <i class="fa-regular fa-user"></i>
-        </a>
-    </div>
-</div>
-        </div>
-    </div>
-  </div>
-
-  <div class="menu">
-    <ul id="box_search">
-        <li><a href="#flores">Flores</a></li>
-        <li><a href="#bebes">Ropa de bebé</a></li>
-        <li><a href="#accesorio">Accesorios</a></li>
-        <li><a href="#trajes">Trajes</a></li>
-        <li><a href="#disfraz">Disfraces</a></li>
-        <li><a href="sobrenosotros.html">Nosotros</a></li>
-    </ul>
-  </div>
-
+    <div id="header"></div>
   <div class="carousel">
     <ul>
         <li><img width="1580" height="450" src="NanaMimus/carrr1.jpg" alt=""></li>
@@ -126,8 +73,6 @@ $items_iniciales = $fila_cont['total'] ?? 0;
   <script src="favoritos.js"></script>
   
   <script src="carrito.js"></script>
-</body>                 
-
-<footer class="footer">
-  </footer>
+</body>      
+<div id="footer"></div>           
 </html>
