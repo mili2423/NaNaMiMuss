@@ -1,0 +1,81 @@
+/* PREGUNTAS FRECUENTES */
+
+/* Estilos generales */
+body.body_pf {
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #1c1c1c; /*Puntero*/
+  cursor: url(cursor/puntero_luna.png), auto;
+}
+a {
+  cursor: url(cursor/mano_luna.png), auto; /*Mano*/
+}
+
+section {
+  min-height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulosuperior {
+  font-size: 3rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+/* Tarjeta de FAQ */
+.tarjeta {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #000000;
+  cursor: pointer;
+}
+
+.pregunta_encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pregunta_encabezado h3 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.fa {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+/* Animación del ícono cuando está activo */
+.tarjeta.active .fa {
+  transform: rotate(180deg);
+}
+
+.respuesta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.respuesta p {
+  padding-top: 1rem;
+  line-height: 1.6;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+/* Mostrar respuesta si activa */
+.tarjeta.active .respuesta {
+  max-height: 500px;
+}

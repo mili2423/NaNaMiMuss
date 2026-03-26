@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>Inicio de Sesión | Nana Mimus</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-left">
+        <a href="IndexNanaMimus.php">
+          <img src="NanaMimus/logotipo.jpg" alt="Logo" class="logo" />
+        </a>
+      </div>
+    </div>
+
+    <div class="volver-atras-container">
+      <button onclick="history.back()" class="volver-atras">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+    </div>
+
+    <h2 class="titulo">Iniciar Sesión</h2>
+    <p class="subtitulo">Hacé tus compras, comentá y más</p>
+
+    <div class="login-container">
+      <form action="login.php" method="post">
+        <input
+          type="email"
+          name="email"
+          placeholder="Correo electrónico"
+          required
+        />
+        <input
+          type="password"
+          name="clave"
+          placeholder="Contraseña"
+          required
+          id="clave"
+        />
+        <button type="button" class="ver" onclick="verClave(event)" id="btnVer">
+          <i class="fa-regular fa-eye-slash"></i>
+        </button>
+        <button class="enviaris" type="submit">Iniciar Sesión</button>
+      </form>
+      <div class="extra-buttons">
+        <a href="olvidar.php">¿Olvidaste tu contraseña?</a>
+        <p>¿No tenés cuenta?</p>
+        <a class="registro" href="crearcuenta.html">Regístrate aquí</a>
+      </div>
+    </div>
+    <script src="ocultar.js"></script>
+  </body>
+</html>

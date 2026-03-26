@@ -1,0 +1,32 @@
+/* Título de cada subcategoría */
+.categoria-header h2 {
+  color: #e195ab; /* Título en rosado */
+  font-size: 26px;
+  text-align: left;
+}
+/* body {
+  background: #1c1c1c;
+  cursor: url(cursor/puntero_luna.png), auto !important;
+}
+
+a,
+button,
+input[type="button"],
+input[type="submit"],
+div {
+  cursor: url(cursor/mano_luna.png), auto !important;
+} */
+
+/* Línea divisoria bajo el título */
+.categoria-header {
+  border-bottom: 2px solid #f5c7d9; /* rosado claro */
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.3rem;
+}
+/*28/09/25*/
+/*resultados.html*/
+.titu_bus {
+  color: #e195ab;
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+}

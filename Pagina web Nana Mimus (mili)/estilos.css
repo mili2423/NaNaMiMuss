@@ -1,0 +1,2696 @@
+/*EDITADo*/
+* {
+  margin: 0; /* Quita el margen por defecto */
+  padding: 0; /* Quita el relleno por defecto */
+  box-sizing: border-box; /* Incluye el padding y el borde dentro del tamaño total del elemento */
+}
+/* body {
+  background: #1c1c1c;
+  cursor: url("cursor/puntero_luna.png"), auto !important;
+}
+a,
+button,
+input[type="button"],
+input[type="submit"],
+div[onclick] {
+  cursor: url("cursor/mano_luna.png"), auto !important;
+} */
+
+/* Estilo del cuerpo de la página */
+html body {
+  scroll-behavior: smooth;
+  margin: 0;
+  font-family: sans-serif; /* Fuente sin serifas para todo el texto */
+  background-color: #ffffff; /* Fondo blanco sólido */
+}
+
+html {
+  scroll-behavior: smooth; /*hace la animacion AL TOCAR LA navbar inferior26/09*/
+}
+
+/* PALETA DE COLORES */
+:root {
+  /*variable*/
+  --gris-muy-claro: #f9f5f6;
+  --rosita-muy-claro: #f8e8ee;
+  --rosa-un-poco-mas-claro: #fdcedf;
+  /* Colores derivados del original para mantener la coherencia si es necesario */
+  --rosa-fuerte-original: #e195ab; /* Tu rosa original para bordes, etc. */
+  --gris-oscuro-texto: #a35f74; /* Tu color de texto original para los links del menú */
+}
+/*aca es lo nuevo 13/09/25*/
+.categoria-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0 15px;
+}
+
+.categoria-header h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #b84d7f;
+  margin: 0;
+}
+.ver-mas-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent; /* sin fondo */
+  box-shadow: none; /* sin sombra */
+}
+
+.ver-mas-card a {
+  text-decoration: none;
+}
+
+/* Boton para volver atras */
+.volver-atras {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.4rem;
+  background: var(--rosa-un-poco-mas-claro);
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #e195ab;
+  /* cursor: pointer; */
+  outline: none;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(225, 149, 171, 0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  margin-left: 10px; /*14/10*/
+  margin-top: 10px; /*14/10*/
+  margin-bottom: 1px; /*14/10*/
+}
+/* 
+.volver-atras:hover, */
+.volver-atras:focus {
+  background: var(--rosa-fuerte-original);
+  color: var(--rosa-un-poco-mas-claro);
+  box-shadow: 0 4px 16px rgba(225, 149, 171, 0.13);
+  transform: translateY(-2px) scale(1.03); /*?**/
+}
+.talle-container {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.talle-label {
+  font-weight: bold;
+}
+
+.talles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Ocultamos los radios para usar los labels como botones */
+input[type="radio"] {
+  display: none;
+}
+
+/* Estilo base de los botones de talle */
+.ppp {
+  background-color: #ffcce5;
+  color: #6b112f;
+  border: 1px solid #ff99cc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.ppp:hover {
+  background-color: #ffb3d4;
+}
+
+/* Cuando el radio está seleccionado */
+input[type="radio"]:checked + .ppp {
+  background-color: #b84d7f;
+  color: white;
+  border-color: #b84d7f;
+}
+/*11/11/25*/
+#filtroContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-right: 60px;
+  margin-bottom: 20px;
+}
+/* Título del filtro */
+#filtroTitulo {
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+#filterSelect {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 35px 8px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+/*10/11/25*/
+select {
+  width: 200px; /* ajusta este valor a tu gusto */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 40px 10px 12px;
+  font-size: 15px;
+  font-family: sans-serif;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  border-color: #e293c4; /* Color violeta tipo amatista */
+  box-shadow: 0 0 0 2px rgba(185, 47, 132, 0.3);
+}
+
+option {
+  padding: 10px;
+}
+/* NAVBAR SUPERIOR */
+.navfija {
+  /*es la posicion del elemento */
+  position: sticky;
+  top: 0; /*la barra suga para abajo */
+  z-index: 1000; /*no se super pongan los elementos */
+}
+
+.navbar {
+  display: flex; /* Flexbox para colocar los elementos en línea */
+  justify-content: space-between; /* Los elementos se separan a los extremos */
+  align-items: center; /* Alineación vertical centrada */
+  padding: 1rem 3rem; /* Relleno: 21rem arriba/abajo, 3rem a los lados */
+  background-color: #fdcedf; /* Fondo rosado claro */
+  padding-bottom: 1px;
+}
+
+.navbar-left {
+  display: flex; /* Flexbox para alinear logo y barra de búsqueda en línea */
+  align-items: center; /* Centrado vertical */
+  gap: 2rem; /* Espaciado entre el logo y la barra */
+}
+
+.logo {
+  height: 4.2rem; /*altura*/
+  width: 4.2rem; /*ancho*/
+  object-fit: cover; /* imagen llene completamente su contenedor*/
+  border-radius: 50%;
+  border: 2px solid var(--rosa-fuerte-original); /* borde a un elemento, estilo sólido y de un color específico */
+  /* box-shadow: 0 2px 8px rgba(225, 149, 171, 0.1); Mantengo el sombreado */
+  /* background: var(--gris-muy-claro); Nuevo color */
+}
+
+.search-bar {
+  /*buscador */
+  padding: 0.5rem 1.5rem; /*hace mas chiquito el buscador o mas grande*/
+  border: 1.5px solid var(--rosa-fuerte-original); /* Mantengo el borde */
+  border-radius: 2rem;
+  background-color: var(
+    --rosita-muy-claro
+  ); /* color de la arte de adentrodel buscador Nuevo color */
+  color: #333; /* Color de texto oscuro para contraste */
+  width: 18rem;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s; /*no se para que sirve*/
+  box-shadow: 0 1px 4px rgba(225, 149, 171, 0.06); /* Mantengo el sombreado */
+  margin-right: 550px; /*14/10/25-pau*/
+}
+
+.search-bar:focus {
+  /*cuando tocamos el elemento*/
+  outline: none;
+
+  background: var(--gris-muy-claro); /* Nuevo color al enfocar */
+  box-shadow: 0 0 0 2px rgba(225, 149, 171, 0.2); /* Sombreado al enfocar */
+}
+
+.icons {
+  display: flex; /* Flexbox para los iconos. elemento en linea */
+  align-items: center; /* Centrado vertical */
+  gap: 0.5rem; /* Espacio entre los iconos */
+}
+
+.icon {
+  height: 5rem; /* Tamaño fijo del icono */
+  width: 5rem;
+  object-fit: contain; /* Ajusta el contenido dentro del contenedor sin recorte */
+  /* cursor: pointer; El cursor cambia a "mano" indicando que se puede hacer clic */
+}
+/* MENÚ INFERIOR */
+/* --- MENÚ INFERIOR --- */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  background-color: var(
+    --rosa-un-poco-mas-claro
+  ); /* ¡Mismo color que arriba! */
+  padding: 10px 0;
+  /* border-top: 1px solid transparent; o podés eliminarlo si molesta */
+  /* border-bottom: 1px solid transparent; */
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--gris-oscuro-texto);
+  font-weight: bold; /*negrita*/
+  font-size: 1rem; /*tamano de la fuente */
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* --- AJUSTE PARA ANCLAS QUE QUEDAN TAPADAS POR LA BARRA --- */
+/* [id] {
+  scroll-margin-top: 150px; /* Deja espacio arriba para que no quede tapado} */
+*/
+
+/* ÍCONO CUENTA */
+.iconcu {
+  margin-left: 2rem; /* Separación izquierda */
+}
+
+.iconcu i {
+  font-size: 2rem; /* Tamaño del icono */
+  color: #f8e8ee; /* Color por defecto, rosado muy claro */
+  transition: color 0.3s ease, transform 0.3s ease; /* Animación suave */
+}
+
+.iconcu a:hover i {
+  color: #e195ab; /* Color rosado al pasar el mouse */
+  transform: scale(1.2); /* Aumenta ligeramente el tamaño */
+}
+
+/* ÍCONO CARRITO */
+.iconcar {
+  margin-left: 2rem;
+}
+
+.iconcar i {
+  font-size: 2rem;
+  color: #f8e8ee;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.iconcar a:hover i {
+  color: #e195ab;
+  transform: scale(1.2);
+}
+
+/* ÍCONO COMENTARIOS */
+.iconcom {
+  margin-left: 2rem;
+}
+
+.iconcom i {
+  font-size: 2rem;
+  color: #f8e8ee;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.iconcom a:hover i {
+  color: #e195ab;
+  transform: scale(1.2);
+}
+
+/* ÍCONO CORAZÓN / FAVORITOS */
+.iconcora {
+  margin-left: 2rem;
+}
+
+.iconcora i {
+  font-size: 30px; /* Tamaño específico del ícono */
+  color: #f8e8ee;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.iconcora a:hover i {
+  color: #e195ab;
+  transform: scale(1.2);
+}
+/* Agrupa los íconos */
+.icons {
+  display: flex;
+  gap: 20px; /* Separación entre íconos */
+}
+
+/* Posiciona los íconos para mostrar tooltips */
+.iconcu,
+.iconcar,
+.iconcom,
+.iconcora {
+  position: relative; /* Necesario para ubicar tooltips */
+}
+
+/* ESTILO DE TOOLTIP (globo informativo) */
+.tooltip {
+  visibility: hidden; /* Oculto por defecto */
+  background-color: #e195ab; /* Fondo rosado */
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 125%; /* Aparece arriba del ícono */
+  left: 50%;
+  transform: translateX(-50%) translateY(5px); /* Centrado horizontal con leve desplazamiento vertical */
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 12px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra suave */
+  margin-top: 10px;
+}
+.contadorFavoritos {
+  color: var(--rosita-muy-claro);
+}
+.contadorFavoritos:hover {
+  color: var(--rosa-fuerte-original);
+  cursor: pointer;
+}
+
+/* Muestra el tooltip al pasar el mouse */
+.iconcu:hover .tooltip,
+.iconcar:hover .tooltip,
+.iconcom:hover .tooltip,
+.iconcora:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(2); /* Sube el tooltip */
+}
+.favoritos-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 95vw;
+  height: 100vh;
+  background: var(--rosita-muy-claro);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  padding: 25px 20px;
+  border-left: 3px solid var(--rosa-fuerte-original);
+}
+
+.favoritos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.favoritos-header h2 {
+  font-size: 1.4rem;
+  color: var(--rosa-fuerte-original);
+  font-weight: 600;
+}
+
+.favoritos-header .fa-xmark:hover {
+  color: var(--gris-oscuro-texto);
+}
+
+/* Cuerpo con scroll */
+.favoritos-body {
+  padding: 10px 16px;
+  overflow-y: auto; /* activa scroll vertical */
+  max-height: 60vh; /* controla el área visible */
+}
+
+/* Personalización de la barra de scroll */
+.favoritos-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.favoritos-body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.favoritos-body::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+.favorito-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.favorito-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.favorito-info {
+  flex: 1;
+}
+
+.favorito-eliminar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+.cerrar-favorito {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+/*******************************************************************/
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .navbar {
+    padding: 0.5rem 1.2rem;
+  }
+  .navbar-left {
+    gap: 1.2rem;
+  }
+  .search-bar {
+    width: 12rem;
+    font-size: 0.97rem;
+  }
+  .icons {
+    gap: 1.1rem;
+  }
+  .menu a {
+    margin: 0 0.7rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.5rem 0.5rem;
+  }
+  .navbar-left {
+    gap: 0.7rem;
+  }
+  .logo {
+    height: 2.2rem;
+    width: 2.2rem;
+  }
+  .search-bar {
+    width: 7.5rem;
+    font-size: 0.9rem;
+  }
+  .icons {
+    gap: 0.7rem;
+  }
+  .menu a {
+    margin: 0 0.3rem;
+    font-size: 0.98rem;
+  }
+  .icon {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+/* --- Estilo general del footer --- */
+footer {
+  background-color: #fdcedf; /* Fondo rosita pastel suave */
+  padding-top: 2rem; /* Espacio grande arriba del contenido */
+  padding-bottom: 3rem; /* Espacio grande abajo del contenido */
+  border-top: 4px solid #e195ab; /* Línea rosa fuerte en la parte superior */
+  font-family: "Poppins", sans-serif; /* Fuente moderna y legible */
+  color: #333;
+  text-decoration: none; /* Quita el subrayado */
+  /* Texto gris oscuro */
+}
+
+/* --- Títulos de cada columna dentro del footer (Contacto, Horarios, Seguinos) --- */
+footer h4 {
+  color: #e195ab; /* Color rosa fuerte */
+  margin-bottom: 1rem; /* Separación debajo del título */
+  font-size: 30px; /* Tamaño grande para destacar */
+}
+
+/* --- Párrafos con información dentro del footer --- */
+footer p {
+  margin: 0rem 0; /* Sin margen arriba y abajo y permite los iconos */
+  font-size: 1rem; /* Tamaño estándar de texto */
+}
+
+/* --- Contenedor principal que organiza las 3 columnas del footer --- */
+.footer-content {
+  display: flex; /* Flexbox para poner columnas en fila */
+  justify-content: space-around; /* Espacio equitativo entre columnas */
+  flex-wrap: wrap; /* Permite que columnas bajen en pantallas pequeñas */
+  gap: 3rem; /* Espacio entre columnas */
+  margin-bottom: 2rem; /* Separación con el pie de copyright */
+  text-align: center; /* Centra el texto dentro de cada columna */
+}
+
+/* --- Cada sección o columna individual del footer --- */
+.footer-section {
+  flex: 1 1 250px; /* Crece y encoge con mínimo ancho de 250px */
+  min-width: 200px; /* No se hace más pequeño que 200px */
+}
+
+/* --- Pie de página final con © y texto legal --- */
+.footer-bottom {
+  text-align: center; /* Centra el texto */
+  font-size: 10px; /* Texto pequeño */
+  border-top: 1px solid #ffc2d6; /* Línea suave separadora arriba */
+  padding-top: 1.2rem; /* Espacio arriba del texto */
+  color: #666; /* Gris claro */
+}
+
+/* --- Lista horizontal de íconos de redes sociales --- */
+.footer-section ul {
+  display: flex; /* Pone íconos en fila */
+  justify-content: center; /* Centra los íconos */
+  gap: 1.2rem; /* Espacio entre cada ícono */
+  padding: 0; /* Sin padding */
+  list-style: none; /* Sin viñetas */
+  margin-top: 1rem; /* Separación arriba de la lista */
+}
+
+/* --- Estilo para cada ícono redondo dentro de la lista --- */
+.footer-section ul li a {
+  background-color: #ffb3cc; /* Fondo rosita suave */
+  color: white; /* Ícono blanco */
+  width: 45px; /* Ancho fijo para círculo */
+  height: 45px; /* Alto fijo para círculo */
+  border-radius: 50%; /* Hace el fondo redondo */
+  display: flex; /* Flexbox para centrar ícono */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  font-size: 1.2rem; /* Tamaño del ícono */
+  transition: all 0.3s ease; /* Transición suave para hover */
+}
+
+/* --- Efecto hover en íconos de redes sociales --- */
+.footer-section ul li a:hover {
+  background-color: #e195ab; /* Cambia fondo a rosa fuerte */
+  transform: scale(1.1); /* Se agranda un poco */
+}
+
+/* --- Responsive: para pantallas menores a 768px --- */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Columnas apiladas verticalmente */
+    align-items: center; /* Centra todo */
+  }
+
+  .footer-section ul {
+    justify-content: center; /* Centra los íconos */
+  }
+}
+
+/* --- Texto general del footer (dirección, horarios, etc.) ajustado --- */
+footer p {
+  margin: 0.5rem 0; /* Margen arriba y abajo */
+  font-size: 15px; /* Texto un poco más grande que antes */
+  font-weight: 500; /* Más presencia al texto */
+}
+
+/* --- Títulos como "Contacto", "Horarios", "Seguinos" ajustados --- */
+footer h4 {
+  color: #e195ab;
+  margin-bottom: 1rem;
+  font-size: 15px; /* Tamaño reducido para más armonía */
+  font-weight: 600;
+}
+
+/* --- Pie de copyright ajustado --- */
+.footer-bottom {
+  font-size: 15px; /* Texto más legible */
+  color: #666;
+}
+
+/* --- Contenedor de íconos, parece un wrapper personalizado --- */
+wrapper {
+  display: inline-flex; /* Pone íconos en fila */
+  list-style: none; /* Sin viñetas */
+  height: 120px; /* Alto fijo */
+  width: 100%; /* Ancho total del contenedor */
+  padding-top: 40px; /* Espacio arriba */
+  font-family: "Poppins", sans-serif; /* Misma fuente moderna */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+/* --- Estilo individual para cada ícono dentro del wrapper --- */
+.wrapper .icon {
+  position: relative; /* Para posicionar tooltip */
+  background: #fff; /* Fondo blanco */
+  border-radius: 50%; /* Circular */
+  margin: 10px; /* Separación entre íconos */
+  width: 50px; /* Tamaño fijo */
+  height: 50px;
+  font-size: 18px;
+  display: flex; /* Flexbox para centrar contenido */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  /* cursor: pointer; Cursor puntero para indicar clickeable */
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Animación */
+}
+
+/* --- Tooltip oculto por defecto --- */
+.wrapper .tooltip {
+  position: absolute; /* Posicionado respecto al icono */
+  top: 0;
+  font-size: 14px;
+  background: #fff; /* Fondo blanco */
+  color: #fff; /* Texto blanco (quizás un error, queda invisible?) */
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Oculto */
+  pointer-events: none; /* No interactúa */
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* --- Triángulo pequeño debajo del tooltip --- */
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #fff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* --- Mostrar tooltip al hacer hover en el ícono --- */
+.wrapper .icon:hover .tooltip {
+  top: -45px; /* Se mueve hacia arriba */
+  opacity: 1; /* Visible */
+  visibility: visible;
+  pointer-events: auto; /* Interactuable */
+}
+
+/* --- Efecto sombra al pasar el mouse --- */
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Cambios de color en tooltip e icono al hacer hover en Facebook --- */
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #e195ab;
+  color: #fff;
+}
+
+/* --- Cambios de color en tooltip e icono al hacer hover en Instagram --- */
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before {
+  background: #e195ab;
+  color: #fff;
+}
+
+/* Estilos generales del carrito (popup) */
+/* Modal general */
+.cart-sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 380px;
+  height: 100vh; /* ocupa toda la altura de la ventana */
+  background: var(--rosita-muy-claro);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  padding: 25px 20px 0 20px;
+  border-left: 3px solid var(--rosa-fuerte-original);
+}
+
+/* Cuerpo con scroll */
+.cart-body {
+  padding: 10px 16px;
+  overflow-y: auto; /* activa scroll vertical */
+  max-height: 50vh; /* controla el área visible */
+}
+
+/* Personalización de la barra de scroll */
+.cart-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cart-body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.cart-body::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.cart-header h2 {
+  font-size: 1.4rem;
+  color: var(--rosa-fuerte-original);
+  font-weight: 600;
+}
+
+.cart-header .fa-xmark {
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--rosa-fuerte-original);
+  background: none;
+  border: none;
+  transition: color 0.3s;
+}
+
+.cart-header .fa-xmark:hover {
+  color: var(--gris-oscuro-texto);
+}
+
+/* Item del carrito */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s ease;
+}
+
+.cart-item:hover {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.item-details {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.item-details p {
+  margin: 3px 0;
+  font-size: 0.93rem;
+  color: var(--gris-oscuro-texto);
+}
+
+.item-details strong {
+  font-weight: 600;
+  display: block;
+  color: var(--rosa-fuerte-original);
+  font-size: 0.95rem;
+}
+
+/* Sección de cantidad y precio */
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cantidad-btn {
+  background: none;
+  border: 1px solid var(--rosa-fuerte-original);
+  color: var(--rosa-fuerte-original);
+  font-weight: 600;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cantidad-btn:hover {
+  background: var(--rosa-fuerte-original);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.cantidad {
+  min-width: 26px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gris-oscuro-texto);
+}
+
+.cart-item-precio {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--gris-oscuro-texto);
+  min-width: 70px;
+  text-align: right;
+}
+
+/* Botón eliminar */
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--rosa-fuerte-original);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: color 0.25s;
+}
+
+/* Radios método de pago */
+.radio-transfer,
+.radio-efectivo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.radio-transfer input[type="radio"],
+.radio-efectivo input[type="radio"] {
+  accent-color: var(--rosa-fuerte-original);
+}
+
+.radio-transfer span,
+.radio-efectivo span {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Resumen y totales */
+.cart-summary {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px 20px;
+}
+
+.cart-summary p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-summary strong {
+  font-size: 1.05rem;
+  color: var(--rosa-fuerte-original);
+}
+
+.transferpop {
+  font-size: 0.9rem;
+  color: var(--gris-oscuro-texto);
+  text-align: right;
+}
+
+/* Input CP + calcular */
+.postal-code {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.postal-code input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.btn-calc {
+  background: var(--rosa-fuerte-original);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-calc:hover {
+  background: var(--gris-oscuro-texto);
+}
+
+/* Botón comprar */
+.btn-buy {
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--rosa-fuerte-original),
+    var(--rosa-un-poco-mas-claro)
+  );
+  border: none;
+  padding: 12px 0;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: opacity 0.3s;
+}
+
+.btn-buy:hover {
+  opacity: 0.9;
+}
+
+/* Link */
+.link {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: var(--rosa-fuerte-original);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Carrito vacío */
+.cart-empty {
+  text-align: center;
+  font-size: 1rem;
+  color: #999;
+  margin: 30px 0;
+}
+.quantity-delete {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.btn-delete:hover {
+  color: #d07893;
+}
+
+.btn-delete i {
+  pointer-events: none;
+}
+.close-btn jsmodalclose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+/* CARRUSEL DE IMÁGENES */
+.carousel {
+  /* width: 84.5rem; Ancho del carrusel 30/10/25*/
+  height: auto;
+  margin: 10px;
+  top: 10px;
+
+  overflow: hidden; /* Oculta las imágenes que se salen del contenedor */
+}
+.carousel ul {
+  display: flex; /* Coloca las imágenes una al lado de la otra */
+  height: 500%;
+  width: 500%; /* 5 imágenes al 100% cada una */
+  animation: slide 20s infinite ease-in-out;
+}
+.carousel li {
+  list-style: none; /* Quita los puntos de la lista */
+  width: 20%; /* 100% / 5 imágenes */
+}
+.carousel img {
+  width: 100%; /* Ajusta cada imagen al ancho de su contenedor */
+}
+
+/* Animación para hacer que el carrusel se desplace */
+
+/* Punto de inicio para estilos responsivos */
+@keyframes slide {
+  0%,
+  16% {
+    margin-left: 0%;
+  }
+  20%,
+  36% {
+    margin-left: -100%;
+  }
+  40%,
+  56% {
+    margin-left: -200%;
+  }
+  60%,
+  76% {
+    margin-left: -300%;
+  }
+  80%,
+  96% {
+    margin-left: -400%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+  }
+  .carousel ul {
+    width: 600%; /* Ajusta el ancho para 5 imágenes al 100% de ancho cada una */
+  }
+  .carousel li {
+    width: 20%; /* Cada imagen ocupa el 20% del ancho del carrusel */
+  }
+}
+
+/* PRODUCTOS Y NOVEDADES */
+
+.productos-secciones {
+  /*es el titulo*/
+  max-width: 1200px; /*define el ancho máximo de un elemento, impidiendo que este supere el valor especificado*/
+  margin: auto; /*hace que se aleje paredes centrar horizontalmente un elemento de bloque dentro de su contenedor */
+}
+
+.grid-product {
+  /*NUEVO CSS PARA LAS TARJETAS*/
+  display: grid; /*se hacen en filas*/
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(180px, 1fr)
+  ); /*define el tamano de las columnas*/
+  gap: 1.2rem; /*espacio entre*/
+  max-width: 1200px; /*el ancho máximo que un elemento puede alcanzar */
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* TARJETA DE PRODUCTO */
+/*cate*/
+.product {
+  /*oculta cualquier contenido que desborde los límites del contenedor definido para un elemento*/
+  background: #f8e8ee !important; /* Fondo rosa claro */
+  border-radius: 20px;
+  padding: 10px; /*de adentro de las tarjetas*/
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+/*imagen*/
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* Asegura que la imagen no se deforme */
+  border-radius: 15px;
+  margin-bottom: 10px; /*espacio entre la imagen y el texto*/
+  transition: transform 0.4s ease; /* Animación de zoom */
+}
+
+.product:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+.product p {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #e195ab;
+}
+
+/* ÍCONOS (como favoritos, etc.) ocultos hasta hover */
+.product-icons {
+  position: absolute;
+  top: 10px; /* controla la posición vertical de un elemento.*/
+  right: 10px; /*la distancia del borde derecho de un elemento con respecto al borde derecho de su elemento contenedor o su posición normal. */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Espaciado entre íconos */
+  opacity: 0; /* Ocultos inicialmente */
+  transition: opacity 0.3s ease;
+}
+
+.product:hover .product-icons {
+  /*el 1 no se puede ver cont detras*/
+  opacity: 1; /* Se muestran al pasar el mouse por el producto */
+}
+
+.product-icons i {
+  background: #f8e8ee;
+  padding: 10px;
+  border-radius: 50%;
+  color: #e195ab;
+  font-size: 14px;
+  transition: transform 0.3s, background 0.3s; /* Animación suave al pasar el mouse */
+}
+
+.product-icons i:hover {
+  background: #e195ab;
+  color: #f8e8ee;
+  transform: scale(1.1); /* Ligero agrandamiento */
+}
+
+/* BOTÓN DE AÑADIR AL CARRITO */
+.add-cart {
+  margin-top: 5px;
+}
+
+.add-cart i {
+  background: #f8e8ee;
+  color: #e195ab;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 14px;
+  /* cursor: pointer; */
+}
+
+.add-cart i:hover {
+  background: #e195ab;
+  color: #f8e8ee;
+  transform: scale(1.1); /* Efecto hover visual */
+}
+
+/* PRECIO DEL PRODUCTO */
+.price {
+  font-size: 1.4rem;
+  color: #e195ab;
+  font-weight: bold;
+}
+
+.price span {
+  text-decoration: line-through; /* Precio anterior tachado */
+  color: gray;
+  font-size: 1.2rem;
+  margin-right: 0.5rem; /* Espacio a la derecha del precio anterior */
+}
+
+/* BOTON DE VER MAS */
+.button-container {
+  display: flex; /* Usa flexbox para alinear elementos */
+  align-items: center; /* Centra verticalmente el botón dentro del contenedor */
+  margin-left: 1rem; /* Agrega espacio a la izquierda para separar de las tarjetas */
+}
+
+/* Estilo general del botón principal */
+.learn-more {
+  position: relative; /* Necesario para posicionar elementos hijos absolutamente */
+  background: transparent; /* Fondo transparente */
+  border: none; /* Sin borde */
+  /* cursor: pointer; Cursor tipo mano al pasar por encima */
+  font-family: inherit; /* Usa la fuente heredada del contenedor */
+  font-size: 1rem; /* Tamaño de fuente base */
+  display: flex; /* Flex para alinear contenido interno */
+  align-items: center; /* Alinea verticalmente los elementos */
+  padding: 0; /* Sin relleno interno */
+  display: inline-block; /* Hace que se ajuste al contenido */
+  outline: none; /* Elimina el contorno al enfocarse */
+  border: 0; /* Elimina cualquier borde */
+  vertical-align: middle; /* Alineación vertical */
+  text-decoration: none; /* Sin subrayado */
+  background: transparent; /* Fondo transparente (repetido) */
+  padding: 0; /* Relleno eliminado (repetido) */
+  font-size: inherit; /* Tamaño heredado */
+  font-family: inherit; /* Fuente heredada */
+  width: 12rem; /* Ancho fijo del botón */
+  height: auto; /* Altura se adapta al contenido */
+  top: 255px;
+  /* margin-top: 10px; Espacio arriba */
+}
+
+/* Círculo rosado con ícono de flecha */
+.learn-more .circle {
+  width: 3rem; /* Ancho del círculo */
+  height: 3rem; /* Alto del círculo */
+  background: #e195ab; /* Color rosado de fondo */
+  border-radius: 50%; /* Forma circular */
+  position: relative; /* Para posicionar la flecha dentro */
+  transition: all 0.4s ease; /* Transiciones suaves al hacer hover */
+  box-shadow: 0 0 5px 1px white; /* Sombra alrededor del círculo */
+  display: flex; /* Flex para centrar el contenido */
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+}
+
+/* Contenedor de la flecha dentro del círculo */
+.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* Animación con curva personalizada */
+  position: absolute; /* Posición absoluta respecto al círculo */
+  top: 0; /* Extiende desde arriba */
+  bottom: 0; /* Hasta abajo */
+  margin: auto; /* Centrado vertical */
+  background: #fff; /* Fondo blanco para la flecha */
+}
+
+/* Línea horizontal de la flecha */
+.learn-more .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* Transición suave */
+  left: 0.625rem; /* Separación desde la izquierda */
+  width: 1.125rem; /* Longitud de la línea */
+  height: 0.125rem; /* Grosor de la línea */
+  background: none; /* Sin fondo (la línea real se hace con ::before) */
+}
+
+/* Punta diagonal de la flecha */
+.learn-more .icon.arrow::before {
+  position: absolute; /* Posicionamiento independiente */
+  content: ""; /* Elemento vacío para crear forma con bordes */
+  top: -0.29rem; /* Subida para formar la punta diagonal */
+  right: 0.0625rem; /* Separación desde el borde derecho */
+  width: 0.625rem; /* Tamaño de la cabeza de flecha */
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff; /* Línea superior */
+  border-right: 0.125rem solid #fff; /* Línea derecha */
+  transform: rotate(45deg); /* Rota para formar la cabeza de flecha */
+}
+
+/* Texto "Ver más", inicialmente oculto */
+.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* Transición suave */
+  position: absolute; /* Posicionamiento absoluto dentro del botón */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0; /* Espacio vertical */
+  margin: 0 0 0 1.85rem; /* Espacio a la izquierda para no chocar con el círculo */
+  color: white; /* Color del texto */
+  font-weight: 700; /* Negrita */
+  line-height: 1.6; /* Espaciado entre líneas */
+  text-align: center; /* Texto centrado */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  opacity: 0; /* Invisible inicialmente */
+}
+
+/* Al pasar el mouse sobre el botón */
+.learn-more:hover .button-text {
+  opacity: 1; /* Hace visible el texto */
+  color: white; /* Asegura que el texto sea blanco */
+}
+
+.learn-more:hover .circle {
+  width: 100%; /* El círculo se expande al ancho total del botón */
+  border-radius: 1.5rem; /* Se convierte en una pastilla */
+} /* BARRA DE INFORMACION*/
+.container-feactures {
+  background-repeat: repeat;
+  background-size: auto;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  padding: 3rem 0;
+  padding-top: 10px;
+
+  flex-wrap: wrap;
+}
+
+.card-feacture {
+  background-color: #f8e8ee;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 300px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.card-feacture i {
+  font-size: 30px;
+  color: #e195ab;
+  margin-top: 5px;
+}
+
+.feacture-content span {
+  font-weight: bold;
+  color: #e195ab;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.feacture-content p {
+  color: #333;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* --- Cada tarjeta --- */
+.card-feacture {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* espacio icono/texto */
+}
+
+/* --- Iconos más grandes --- */
+.card-feacture i {
+  font-size: 3rem; /* aumento del tamaño del icono */
+  color: #e195ab;
+  min-width: 3rem; /* tamaño fijo para los iconos */
+}
+
+/* --- Contenido de texto --- */
+.feacture-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem; /* espacio entre título y descripción */
+}
+
+/* Título (span) */
+.feacture-content span {
+  font-size: 1.6rem; /* aumento de tamaño del texto */
+  font-weight: 600;
+  color: #e195ab;
+}
+
+/* Descripción (p) */
+.feacture-content p {
+  font-size: 1.2rem; /* aumento de tamaño del texto */
+  font-weight: 400;
+  color: #333333a9;
+  line-height: 1.5;
+  margin: 0;
+}
+/*INICIO DE SESION*/
+/* Contenedor del formulario de inicio de sesión */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente los hijos */
+  justify-content: center; /* Centra verticalmente si hay espacio */
+  background: #f8e8ee;
+  padding: 32px 28px;
+  /* box-shadow eliminado para quitar el difuminado */
+  border-radius: 12px;
+  text-align: center;
+  width: 350px;
+  margin: 32px auto 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-container h3 {
+  color: #e195ab;
+  margin-bottom: 18px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #f8f8f8;
+}
+
+.login-container label {
+  font-weight: 500;
+  color: #a35f74;
+  margin-bottom: 6px;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e195ab;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  background: #fff;
+  color: #333;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.login-container input:focus {
+  border: 2px solid #fdcedf;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 2px #fdcedf33;
+}
+
+.ver {
+  position: absolute;
+  right: 35rem; /*24/10*/ /*modificar ojo*/
+  top: 56.3%; /*24/10*/
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #330512;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  line-height: 0;
+}
+
+.input-password input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 10px;
+  width: 100%;
+  flex-grow: 1;
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+  padding-right: 100px;
+}
+
+.enviaris {
+  background: #e195ab;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+  transition: background 0.3s;
+}
+
+.extra-buttons {
+  margin-top: 18px;
+  text-align: center;
+  width: 100%;
+}
+
+.extra-buttons p {
+  margin: 10px 0 6px 0;
+  font-size: 14px;
+  color: #a35f74;
+  font-weight: 500;
+}
+
+.registro {
+  background: #fdcedf;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  margin: 4px 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: none;
+}
+
+.registro hover {
+  background: #e195ab;
+}
+
+.extra-buttons a {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e195ab;
+  text-decoration: none;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+
+.extra-buttons a:hover {
+  color: #a35f74;
+  text-decoration: underline;
+}
+
+/* Eliminar subrayado de enlaces globalmente */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/*CREAR CUENTA*/
+/* CONTENEDOR PRINCIPAL */
+/* CONTENEDOR PRINCIPAL */
+.contenedor-centrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px;
+  background: #fff; /* Fondo blanco */
+  min-height: 100vh;
+}
+
+/* FORMULARIO */
+.crearcuenta {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente los hijos */
+  justify-content: center; /* Centra verticalmente si hay espacio */
+  background: #f8e8ee;
+  padding: 32px 28px;
+  border-radius: 12px;
+  text-align: center;
+  width: 350px;
+  margin: 12px auto 0 auto;
+}
+
+/* Etiquetas de los campos */
+.crearcuenta label {
+  font-weight: 500;
+  color: #a35f74;
+  margin-bottom: 6px;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+/* Campos de entrada */
+.crearcuenta input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e195ab;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  background: #fff;
+  color: #333;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.crearcuenta input:focus {
+  border: 2px solid #fdcedf;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 2px #fdcedf33;
+}
+.verr1 {
+  position: absolute;
+  right: 35rem;
+  top: 128.5%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  line-height: 0;
+}
+
+.verr2 {
+  position: absolute;
+  right: 34.7rem;
+  top: 142.5%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  line-height: 0;
+}
+
+.input-password input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 10px;
+  width: 100%;
+  flex-grow: 1;
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+  padding-right: 100px;
+}
+/* Botón de enviar */
+.enviarr {
+  background: #e195ab;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+  transition: background 0.3s;
+}
+/* Estilos del inicio de sesión */
+.iniciar-sesion {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.iniciar-sesion h4 {
+  margin-bottom: 6px;
+  color: #e195ab;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.btnsesion {
+  background: #fdcedf;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  margin: 4px 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: none;
+}
+
+.btnsesion hover {
+  background: #e195ab;
+}
+.iniciar-sesion a {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e195ab;
+  text-decoration: none;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+
+.iniciar-sesion a:hover {
+  color: #a35f74;
+  text-decoration: underline;
+}
+
+/* Título y subtítulo */
+.titulo {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #9b2250;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 18px;
+  color: #e195ab;
+  margin-bottom: 28px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contenedor-centrado {
+    padding: 24px 4vw;
+  }
+  .crearcuenta {
+    padding: 24px 8px;
+    max-width: 98vw;
+  }
+  .titulo {
+    font-size: 24px;
+  }
+  .subtitulo {
+    font-size: 15px;
+  }
+}
+/*registro exitoso*/
+/* Contenedor principal del mensaje de registro exitoso */
+.content-registro-exitoso {
+  background-color: #f8e8ee;
+  padding: 48px 32px 36px 32px;
+  border-radius: 18px;
+  /* box-shadow eliminado para quitar el difuminado */
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  margin: 64px auto 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Título principal */
+.h1re {
+  font-size: 2rem;
+  color: #e195ab;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* Subtítulo */
+.h3re {
+  font-size: 1.1rem;
+  color: #a35f74;
+  margin-bottom: 28px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Botón de acción principal */
+.botonregistro {
+  background: #e195ab;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: 18px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  /* box-shadow eliminado para quitar el difuminado */
+}
+
+.botonregistro:hover {
+  background: #fdcedf;
+  color: #e195ab;
+  /* box-shadow eliminado para quitar el difuminado */
+}
+
+.botonregistro:hover {
+  color: #fff;
+  background: #e195ab; /* Cambia el color de fondo al pasar el mouse */
+  /* box-shadow eliminado para quitar el difuminado */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .content-registro-exitoso {
+    padding: 28px 8px 20px 8px;
+    max-width: 98vw;
+    margin-top: 32px;
+  }
+  .h1re {
+    font-size: 1.3rem;
+  }
+  .h3re {
+    font-size: 1rem;
+  }
+  .botonregistro {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+/*ESTILOS DE CONTRASEÑA*/
+/* OLVIDAR CONTRASEÑA 1 */
+/* Contenedor centrado */
+.content_olvidar1 {
+  background-color: #f8e8ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 16px;
+  text-align: center;
+  width: 500px;
+  margin: 10px auto 0 auto;
+  font-family: "Poppins", sans-serif;
+  border: 1.5px solid #e195ab;
+}
+
+.h1_olvidar1 {
+  color: #e195ab;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.h3_olvidar1 {
+  color: #a35f74;
+  font-size: 18px;
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.email {
+  margin-top: 18px;
+  text-align: left;
+  width: 100%;
+}
+
+.InputEmail {
+  width: 350px;
+  padding: 10px 12px;
+  border: 1px solid #e195ab;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  background: #fff;
+  color: #333;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.InputEmail {
+  border: 2px solid #fdcedf;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 2px #fdcedf33;
+}
+
+/* OLVIDAR CONTRASEÑA 2*/
+/* Contenedor centrado */
+.login_olvidar2 {
+  background-color: #f8e8ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 16px;
+  text-align: center;
+  width: 500px;
+  margin: 10px auto 0 auto;
+  font-family: "Poppins", sans-serif;
+  border: 1.5px solid #e195ab;
+}
+
+.h2_olvidar2 {
+  color: #e195ab;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 0.02em;
+}
+
+.label2_olvidar2 {
+  font-size: 15px;
+  color: #a35f74;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  letter-spacing: 0.01em;
+  text-align: left;
+  width: 100%;
+}
+
+.imput_olvidar2 {
+  width: 350px;
+  padding: 10px 12px;
+  border: 1px solid #e195ab;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  background: #fff;
+  color: #333;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.imput_olvidar2:focus {
+  border: 2px solid #fdcedf;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 2px #fdcedf33;
+}
+.button_olvidar2 {
+  background: #fdcedf;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  margin: 2px 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: none;
+  width: 270px;
+}
+
+.button_olvidar2:hover {
+  background: #e195ab;
+}
+.verol1 {
+  position: absolute;
+  right: 32.5rem;
+  top: 49.5%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  line-height: 0;
+}
+
+.verol2 {
+  position: absolute;
+  right: 32.5rem;
+  top: 68.5%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #e195ab;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  line-height: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login_olvidar2 {
+    padding: 24px 8px;
+    width: 98vw;
+    margin-top: 24px;
+  }
+  .h2_olvidar2 {
+    font-size: 20px;
+  }
+  .boton_olvidar2 {
+    font-size: 15px;
+    padding: 12px 0;
+  }
+}
+/* CONTRASEÑA CAMBIADA*/
+/* ----- CONTENIDO PRINCIPAL ----- */
+.container_cont_cambiada {
+  background-color: #f8e8ee;
+  text-align: center;
+  padding: 38px 32px 36px 32px;
+  border-radius: 18px;
+  max-width: 420px;
+  width: 100%;
+  margin: 14px auto 0 auto;
+  font-family: "Poppins", sans-serif;
+  border: 1.5px solid #e195ab;
+}
+
+.cont_cambiada {
+  color: #e195ab;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.p_cont_cambiada {
+  font-size: 1.1rem;
+  color: #a35f74;
+  margin-bottom: 28px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ----- BOTÓN ----- */
+.btn_contc {
+  display: inline-block;
+  background-color: #e195ab;
+  color: #fff;
+  padding: 14px 0;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  width: 100%;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  /* box-shadow eliminado para quitar el difuminado */
+  margin-top: 18px;
+  cursor: pointer;
+}
+
+.btn_contc:hover {
+  background: #fdcedf;
+  color: #e195ab;
+  /* box-shadow eliminado para quitar el difuminado */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container_cont_cambiada {
+    padding: 28px 8px 20px 8px;
+    max-width: 98vw;
+    margin-top: 32px;
+  }
+  .cont_cambiada {
+    font-size: 1.3rem;
+  }
+  .p_cont_cambiada {
+    font-size: 1rem;
+  }
+  .btn_contc {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+/* seccion de flores*/
+.categoria-titulo_flores {
+  font-size: 2.4rem;
+  color: #e195ab;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-shadow: 1px 1px 2px rgba(225, 149, 171, 0.2);
+  margin-top: 3rem;
+  margin: 2rem;
+}
+
+/* Espaciado entre secciones */
+.categoria_flores {
+  margin-bottom: 4rem;
+}
+
+/* Grilla de flores */
+.grid-flores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Tarjeta de cada flor */
+.flor {
+  position: relative;
+  background: var(--rosita-muy-claro);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 20px rgba(225, 149, 171, 0.15);
+  padding: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+  width: 230px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flor:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(225, 149, 171, 0.25);
+}
+
+/* Imagen de cada flor */
+.img_flores {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(225, 149, 171, 0.1);
+}
+
+.flor:hover .img_flores {
+  transform: scale(1.05);
+}
+
+/* Descripción */
+.p_flores {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #a35f74;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.01em;
+}
+
+/* Precios */
+.price_flores {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e195ab;
+  margin-bottom: 0.7rem;
+}
+
+.price_flores span {
+  text-decoration: line-through;
+  color: #bdbdbd;
+  font-size: 1rem;
+  margin-right: 0.4rem;
+}
+
+/* Íconos de acción */
+.product-icons_flores {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.flor:hover .product-icons_flores {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.product-icons_flores i {
+  background: #f8e8ee;
+  padding: 0.6rem;
+  border-radius: 50%;
+  color: #e195ab;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(225, 149, 171, 0.1);
+}
+
+.product-icons_flores i:hover {
+  background: #e195ab;
+  color: #fff;
+  transform: scale(1.15);
+}
+
+/* Botón de carrito */
+.add-cart i {
+  font-size: 1.2rem;
+  color: #e195ab;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.add-cart i:hover {
+  color: #a35f74;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .grid-flores {
+    gap: 1rem;
+  }
+
+  .flor {
+    width: 90vw;
+    max-width: 320px;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .img_flores {
+    height: 140px;
+  }
+
+  .categoria-titulo_flores {
+    font-size: 1.6rem;
+  }
+}
+/* Producto detallado */
+.detalle-producto_prodet {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.image-container_prodet {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.main-image_prodet {
+  /*contenido*/
+  width: 400px; /* Ancho del contenedor. imagen */
+  height: 400px; /* Alto del contenedor */
+  overflow: hidden; /*oculta el contenido que se salga del limite*/
+}
+
+.main-image_prodet img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* O 'contain', 'fill', etc. */
+  border-radius: 1rem;
+}
+
+.thumbnail-container_prodet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.thumbnail-container_prodet img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.thumbnail-container_prodet img:hover {
+  border-color: #ff7aa2;
+}
+
+.info_prodet {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.titulo_prodet {
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: #b84d7f;
+}
+
+.precio-principal_prodet {
+  font-size: 1.5rem;
+  color: #e195ab;
+  margin: 0;
+  font-weight: bold;
+}
+
+.p_prodet {
+  color: #555;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.promos_prodet p {
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.2rem 0;
+}
+
+.cantidad-y-carrito_prodet {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.cantidad_prodet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-btn_prodet {
+  background-color: #fdcedf;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.qty-btn_prodet:hover {
+  background-color: #e195ab;
+}
+
+.input_prodet {
+  width: 3rem;
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+}
+
+.btn-carrito_prodet {
+  width: 160px;
+  background-color: #fdcedf;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 10rem;
+  transition: background-color 0.3s;
+}
+
+.btn-carrito_prodet:hover {
+  background-color: #e195ab;
+}
+
+.chips_prodet {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chip-opcion_prodet {
+  background-color: #fdcedf;
+  border: 1px solid #ddd;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.chip-opcion_prodet:hover {
+  background-color: #e195ab;
+  color: white;
+}
+
+.envio_prodet {
+  color: green;
+  font-weight: bold;
+}
+
+.descripcion_prodet {
+  /*26/09*/
+  margin: 0;
+  padding: 0;
+  margin-top: 0;
+}
+
+.descripcion_prodet h3 {
+  margin-bottom: 0.5rem;
+}
+
+.descripcion_prodet ul {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.descripcion_prodet li {
+  margin-bottom: 0.3rem;
+}
+/* Thumbnails (radio buttons) */
+.radio-buttons {
+  display: flex;
+  gap: 0.5rem;
+
+  justify-content: center;
+}
+
+.radio-buttons input[type="radio"] {
+  /*oculta un elemento */
+  display: none; /*oculta los input radio*/
+}
+
+.radio-buttons label {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+
+  transition: border 0.3s ease;
+}
+/*ocupe todo su*/
+.radio-buttons label img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.radio-buttons input[type="radio"]:checked + label {
+  border-color: #ff85b3;
+} /*colro de selec*/
+/* Ajustes responsivos
+@media (max-width: 768px) {
+  .detalle-producto_prodet {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container_prodet,
+  .info_prodet {
+    flex: 1 1 100%;
+    margin: 0;
+  }
+
+  .cantidad-y-carrito_prodet {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+} */
+/* Nosotros */
+.titulosuperior {
+  font-size: 3rem;
+  color: #d46b8c;
+  text-align: center;
+  margin: 60px auto 40px auto;
+  font-weight: 900;
+  text-shadow: 0 3px 12px rgba(212, 107, 140, 0.25);
+  border-radius: 30px;
+  margin-top: 1rem;
+  padding-bottom: 0rem;
+}
+
+/* CONTENEDOR GENERAL */
+.about {
+  margin-top: 0;
+  width: 100%;
+  background: #fffdfd;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* CORRECTO: contenedor 1 y 3 alineados a la izquierda */
+.about_containeriz,
+.about_container:nth-of-type(3) {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1200px;
+  margin-left: 5%;
+}
+
+/* SEGUNDA FILA: alineada a la derecha */
+.about_container:nth-of-type(2) {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: 5%;
+}
+
+/* IMÁGENES */
+.about_container img,
+.about_containeriz img {
+  max-width: 270px;
+  border-radius: 1rem;
+  border: 3px solid #fdd2df;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* TEXTOS IZQUIERDA Y DERECHA */
+.about_text_izq,
+.about_text_der {
+  max-width: 500px;
+  background: linear-gradient(to bottom right, #fde3ec, #fffafc);
+  padding: 20px 30px;
+  border-radius: 20px;
+  border: 2px solid #fbc9da;
+  box-shadow: 0 8px 16px rgba(212, 107, 140, 0.15);
+  text-align: left;
+}
+
+.section_title {
+  font-size: 1.6rem;
+  color: #d46b8c;
+  margin-bottom: 0.5rem;
+}
+
+.about_text_izq h2,
+.about_text_der h2 {
+  color: #a14f68;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.about_text_izq p,
+.about_text_der p {
+  font-size: 1rem;
+  color: #3a2d2f;
+  line-height: 1.6;
+}
+.about {
+  width: 100%;
+  background: #fffdfd;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* FILAS EN FLEX */
+.about_containeriz3,
+.about_container,
+.about_containeriz {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin-left: 5%;
+}
+
+/* SEGUNDA FILA: alineada a la derecha */
+.about_container:nth-of-type(2) {
+  margin-left: auto;
+  margin-right: 5%;
+}
+
+/* IMÁGENES */
+.about_containeriz3 img {
+  width: 320px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 3px solid #fdd2df;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.about_container img {
+  width: 240px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 3px solid #fdd2df;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.about_containeriz img {
+  width: 260px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 3px solid #fdd2df;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* TEXTOS */
+.about_text_izq,
+.about_text_der {
+  max-width: 500px;
+  background: linear-gradient(to bottom right, #fde3ec, #fffafc);
+  padding: 20px 30px;
+  border-radius: 20px;
+  border: 2px solid #fbc9da;
+  box-shadow: 0 8px 16px rgba(212, 107, 140, 0.15);
+}
+
+.about_text_izq {
+  text-align: left;
+}
+.about_text_der {
+  text-align: right;
+}
+
+/* TÍTULOS */
+.section_title {
+  font-size: 1.8rem;
+  color: #d46b8c;
+  margin-bottom: 0.4rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+}
+
+.about_text_izq h2,
+.about_text_der h2 {
+  font-size: 1.2rem;
+  color: #a14f68;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.about_text_izq p,
+.about_text_der p {
+  font-size: 1rem;
+  color: #3a2d2f;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .about_containeriz,
+  .about_container {
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto !important;
+  }
+
+  .about_text_izq,
+  .about_text_der {
+    text-align: center;
+  }
+
+  .about_container img,
+  .about_containeriz img {
+    width: 90%;
+  }
+}
