@@ -31,17 +31,35 @@ fetch("productos.php")
 
     productos.forEach(producto => {
 
-      const card = `
-        <div class="card-producto">
+     const card = `
 
-          <img src="${producto.imagen1}" alt="${producto.nombre}">
+<div class="producto-card">
 
-          <h3>${producto.nombre}</h3>
+    <div class="producto-img">
+        <img src="${producto.imagen1}" alt="${producto.nombre}">
+    </div>
 
-          <p>$${producto.precio}</p>
+    <div class="producto-info">
 
-        </div>
-      `;
+        <h3>${producto.nombre}</h3>
+
+        <p class="precio">
+            $${producto.precio}
+        </p>
+
+        <p class="categoria">
+            ${producto.categoria}
+        </p>
+
+        <button class="btn-comprar">
+            Ver producto
+        </button>
+
+    </div>
+
+</div>
+
+`;
 
       contenedor.innerHTML += card;
 
