@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "root", "", "nana_mimus");
+$conn = new mysqli("localhost", "root", "", "NanaMimus");
 if ($conn->connect_error) die("Error de conexión: " . $conn->connect_error);
 
 if (isset($_POST['enviar'])) { // Botón del formulario
