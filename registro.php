@@ -2,7 +2,7 @@
 session_start();
 
 // Conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "nana_mimus");
+$conn = new mysqli("localhost", "root", "", "NanaMimus");
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
