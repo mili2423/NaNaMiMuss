@@ -23,9 +23,7 @@
         <input type="text" id="buscador" class="search-bar" placeholder="Buscar...">
         <div class="icons">
            <?php
-session_start();
-include("conexion.php"); 
-?>   
+session_start();?>   
           <div class="iconcu">
            <a href="<?php echo isset($_SESSION['usuario']) ? 'perfil.php' : 'iniciosesion.html'; ?>">
         <i class="fa-solid fa-user"></i>
@@ -150,42 +148,60 @@ include("conexion.php");
  </div> 
 </div>
 </main>
-<script type="module">/*Funciona el buscador 26/09*/
-  import { productos } from "./productos.js";
+<script>
+let productos = [];
 
-  const buscador = document.getElementById("buscador");
+fetch("productos.php")
+  .then(response => response.json())
+  .then(data => {
 
-  buscador.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" ) 
-    {  
-      const query = buscador.value.trim().toLowerCase();//Obtiene la consulta (query), filtra productos por nombre o categoría (case-insensitive).
-      //esto es de joda :]. echo con mucho amor <3
-      switch(query)
-      {
-        case "pez":
-          window.location.href="https://www.youtube.com/watch?v=qMv_G_Wh9UM";
-          return;
-          case "michi":
-          window.location.href="https://www.google.com/search?q=michis&sca_esv=2369d6cd51414d5b&udm=2&biw=1366&bih=651&ei=6fUEaf3XDa-D5OUPzK7uiQQ&ved=0ahUKEwi98LeK_86QAxWvAbkGHUyXO0EQ4dUDCBQ&uact=5&oq=michis&gs_lp=Egtnd3Mtd2l6LWltZyIGbWljaGlzMggQABiABBixAzIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEj_E1CjCVioEXACeACQAQCYAWWgAcYEqgEDNS4xuAEDyAEA-AEBmAIGoALOBagCAMICChAAGIAEGEMYigXCAg0QABiABBixAxhDGIoFwgILEAAYgAQYsQMYgwHCAgcQABiABBgKmAMIkgcDMC42oAeGHLIHAzAuNrgHzgXCBwUzLTUuMcgHdQ&sclient=gws-wiz-img";
-          return;
-          case "uva":
-          window.location.href="https://www.youtube.com/watch?v=lLSu0UHNZhU";
-          return;
-        }
-      // aca lo filtra
-      const resultados = productos.filter(
-        (p) =>
-          p.nombre.toLowerCase().includes(query) ||
-          p.categoria.toLowerCase().includes(query)
-      );
-  
-      // lo guarda en localStorage
-      localStorage.setItem("resultadosBusqueda", JSON.stringify(resultados));
-      // nos manda al resultados
-      window.location.href = "resultados.html";
+    productos = data;
+
+    const contenedor = document.querySelector(".contenedor-productos");
+
+    productos.forEach(producto => {
+
+      contenedor.innerHTML += `
       
-    }
+      <div class="card-producto">
+
+        <img src="${producto.imagen1}" alt="${producto.nombre}">
+
+        <h3>${producto.nombre}</h3>
+
+        <p>$${producto.precio}</p>
+
+      </div>
+
+      `;
+
+    });
+
   });
+
+const buscador = document.getElementById("buscador");
+
+buscador.addEventListener("keydown", (e) => {
+
+  if (e.key === "Enter") {
+
+    const query = buscador.value.trim().toLowerCase();
+
+    const resultados = productos.filter(
+      (p) =>
+        p.nombre.toLowerCase().includes(query) ||
+        p.categoria.toLowerCase().includes(query)
+    );
+
+    localStorage.setItem(
+      "resultadosBusqueda",
+      JSON.stringify(resultados)
+    );
+
+    window.location.href = "resultados.html";
+  }
+
+});
 </script>
 
 <!-- Scripts -->
