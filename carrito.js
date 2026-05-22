@@ -1,4 +1,4 @@
-// CLASE CARRITO
+// CLASE CARRITO NanaMimus
 class Carrito {
   constructor() {
     this.items = JSON.parse(localStorage.getItem("carrito")) || [];
