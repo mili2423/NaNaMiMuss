@@ -1,7 +1,6 @@
-// Clase para definir productos. obj, prop, met
+// Clase para definir productos
 class Producto {
-  //molde o plantilla para crear varios objetos con las mismas propiedades
-  constructor( //ejecuta automáticamente
+  constructor(
     id,
     nombre,
     precio,
@@ -9,26 +8,26 @@ class Producto {
     categoria,
     descripcion,
     especificaciones,
-    subcategoria, //se le asigna
+    subcategoria,
     opcion
   ) {
     this.id = id;
     this.nombre = nombre;
     this.precio = precio;
-    this.imagenes = imagenes; // Array de imágenes
+    this.imagenes = imagenes;
     this.categoria = categoria;
     this.descripcion = descripcion;
     this.especificaciones = especificaciones;
-    this.subcategoria = subcategoria; // Array de strings
+    this.subcategoria = subcategoria;
     this.opcion = opcion;
   }
 }
 
-// Lista de productos+
-//er utilizado en otros módulos o archivos del programa
 fetch("productos.php")
   .then(response => response.json())
   .then(productos => {
+
+    const contenedor = document.querySelector(".contenedor-productos");
 
     productos.forEach(producto => {
 
@@ -44,10 +43,11 @@ fetch("productos.php")
         </div>
       `;
 
-      document.querySelector(".contenedor-productos")
-      .innerHTML += card;
+      contenedor.innerHTML += card;
 
     });
 
+  })
+  .catch(error => {
+    console.error("Error:", error);
   });
-window.productos = productos;

@@ -7,7 +7,7 @@ $base_datos = "NanaMimus"; // Nombre de la base de datos
 
 
 $conexion = new mysqli($servidor, $usuario, $password, $base_datos);
-/*
+
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
