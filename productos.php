@@ -1,10 +1,14 @@
 <?php
 
-include("conexion.php");
+$conexion = new mysqli($servidor, $usuario, $password, $base_datos);
+
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
 
 $sql = "SELECT * FROM productos";
 
-$resultado = $conn->query($sql);
+$resultado = $conexion->query($sql);
 
 $productos = [];
 
