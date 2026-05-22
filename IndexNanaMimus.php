@@ -1,4 +1,5 @@
 
+<?php include("conexion.php"); ?>
 <!DOCTYPE html>
 <!-- EDITADO -->
 <html lang="es">
@@ -24,7 +25,6 @@
         <div class="icons">
            <?php
 session_start();
-include("conexion.php"); 
 ?>   
           <div class="iconcu">
            <a href="<?php echo isset($_SESSION['usuario']) ? 'perfil.php' : 'iniciosesion.html'; ?>">
