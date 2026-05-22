@@ -8,8 +8,8 @@
   <title>Index | Nana Mimus</title>
    <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="mas_prod.css"><!--CSS DE LA PAGINA-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">include("conexion.php"); 
+  </head>
 <body>
   <!-- NAVBAR SUPERIOR -->
    <!-- NAVBAR SUPERIOR -->
@@ -24,6 +24,7 @@
         <div class="icons">
            <?php
 session_start();
+include("conexion.php"); 
 ?>   
           <div class="iconcu">
            <a href="<?php echo isset($_SESSION['usuario']) ? 'perfil.php' : 'iniciosesion.html'; ?>">
