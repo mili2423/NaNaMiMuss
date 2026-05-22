@@ -1,5 +1,4 @@
-
-
+<?php include("conexion.php"); ?>
 <!DOCTYPE html>
 <!-- EDITADO -->
 <html lang="es">
@@ -25,6 +24,7 @@
         <div class="icons">
            <?php
 session_start();
+include("conexion.php"); 
 ?>   
           <div class="iconcu">
            <a href="<?php echo isset($_SESSION['usuario']) ? 'perfil.php' : 'iniciosesion.html'; ?>">
@@ -136,7 +136,7 @@ session_start();
 </div>
 
 <main id="lista-categorias"  class="productos-secciones" ><!--trae las tarjetas y cat prusecc es el estilo en css-->
-
+<div class="contenedor-productos">
  <div id="btn-flores">
     <div class="button-container">
          <a href="flores.html" class="learn-more">
@@ -146,6 +146,7 @@ session_start();
        <span class="button-text">Ver más</span>
        </a>
       </div>
+</div>
  </div> 
 </div>
 </main>
