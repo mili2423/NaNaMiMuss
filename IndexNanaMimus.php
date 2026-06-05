@@ -67,7 +67,7 @@
     </ul>
 </div>
 <div class="contenedor-productos">
- <?php
+<?php
 include("conexion.php");
 
 $sql = "SELECT * FROM productos";
@@ -87,20 +87,19 @@ if ($resultado && $resultado->num_rows > 0) {
         <a href="producto.php?id=<?php echo $producto['id']; ?>">
 
             <img
-                src="<?php echo htmlspecialchars($producto['imagen']); ?>"
-                alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
-                
+                src="<?php echo $producto['imagen']; ?>"
+                alt="<?php echo $producto['nombre']; ?>"
             >
 
         </a>
 
-        <?php if(isset($producto['descuento']) && $producto['descuento'] > 0) { ?>
+        <?php if(isset($producto['descuento']) && $producto['descuento'] > 0){ ?>
             <span class="badge-descuento">
                 -<?php echo $producto['descuento']; ?>%
             </span>
         <?php } ?>
 
-        <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
+        <h3><?php echo $producto['nombre']; ?></h3>
 
         <p class="precio">
             $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
@@ -110,13 +109,12 @@ if ($resultado && $resultado->num_rows > 0) {
 
 <?php
     }
-
 } else {
-
     echo "<p>No hay productos cargados.</p>";
-
 }
 ?>
+
+</section>
 <p><?php echo $producto['imagen']; ?></p>
 </section>
 
