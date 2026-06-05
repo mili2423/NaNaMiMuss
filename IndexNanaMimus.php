@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
   </head>
 <body>
-  <!-- NAVBAR SUPERIOR -->
-   <!-- NAVBAR SUPERIOR -->
   <div class="navfija">
-    <div class="navbar"><!--aca dice como debe se la navbar-->
-        <div class="navbar-left"><!--aca como es la posiccion de los elementos-->
+    <div class="navbar">
+        <div class="navbar-left">
         <a href="IndexNanaMimus.php">
           <img src="NanaMimus/logotipo.jpg" alt="Logo" class="logo">
         </a>
