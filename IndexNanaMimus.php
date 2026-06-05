@@ -1,74 +1,84 @@
-<?php include("conexion.php"); ?>
+<?php 
+include("conexion.php"); 
+?>
 <!DOCTYPE html>
-<!-- EDITADO -->
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--hace que la página sea responsive en móviles.-->
-  <title>Index | Nana Mimus</title>
-   <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="mas_prod.css"><!--CSS DE LA PAGINA-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
-  </head>
-<body>
- <header class="header">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index | Nana Mimus</title>
     
-    <div class="header-top">
+    <!-- Fuente tipográfica estilo Figma (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Hojas de estilo e Iconos -->
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="mas_prod.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+</head>
+<body>
 
-        <a href="indexNanaMimus.php" class="logo-container">
-            <img src="NanaMimus/logotipo.jpg" alt="Nana Mimus" class="logo">
-        </a>
-
-        <form action="buscar.php" method="GET" class="search-bar">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-                type="text"
-                name="q"
-                placeholder="Buscar productos..."
-                autocomplete="off"
-            >
-
-        </form>
-
-        <div class="header-icons">
-
-            <a href="preguntasfrecuentes.html" class="icon-btn">
-                <i class="fa-solid fa-circle-question"></i>
-                <span>Ayuda</span>
+  <!-- NAVBAR PRINCIPAL -->
+  <div class="navfija">
+    <div class="navbar">
+        
+        <!-- Logo -->
+        <div class="navbar-left">
+            <a href="indexNanaMimus.php">
+                <img src="NanaMimus/logotipo.jpg" alt="Logo" class="logo">
             </a>
+        </div>
 
-            <a href="#" onclick="toggleFavoritos()" class="icon-btn">
-                <i class="fa-solid fa-heart"></i>
-                <span id="contadorFavoritos">0</span>
-            </a>
+        <!-- Barra de Buscador integrada -->
+        <div class="navbar-search">
+            <form action="indexNanaMimus.php" method="GET" class="search-form">
+                <input type="text" name="buscar" placeholder="¿Qué estás buscando?..." value="<?php echo isset($_GET['buscar']) ? htmlspecialchars($_GET['buscar']) : ''; ?>">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
 
-            <a href="#" class="icon-btn">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <span id="contadorCarrito">0</span>
-            </a>
+        <!-- Iconos y Contadores -->
+        <div class="navbar-icons">
+            <div class="iconcar">
+                <a href="#">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </a>
+                <span class="contadorFavoritos" id="contadorCarrito">0</span>
+                <div class="tooltip">Mi Carrito</div>
+            </div>
 
-            <a href="#" class="icon-btn">
-                <i class="fa-solid fa-user"></i>
-            </a>
+            <div class="iconcom">
+                <a href="preguntasfrecuentes.html">
+                    <i class="fa-solid fa-comments"></i>
+                </a>
+                <div class="tooltip">Preguntas Frecuentes</div>
+            </div>
 
+            <div class="iconcora">
+                <a href="#" onclick="toggleFavoritos()">
+                    <i class="fa-solid fa-heart"></i>
+                </a>
+                <span class="contadorFavoritos" id="contadorFavoritos">0</span>
+                <div class="tooltip">Mis Favoritos</div>
+            </div>
         </div>
 
     </div>
+  </div>
 
-    <nav class="menu-categorias">
-
-        <a href="#flores">Flores</a>
-        <a href="#bebes">Ropa de Bebé</a>
-        <a href="#accesorio">Accesorios</a>
-        <a href="#trajes">Trajes</a>
-        <a href="#disfraz">Disfraces</a>
-        <a href="sobrenosotros.html">Nosotros</a>
-
-    </nav>
-
-</header>
+  <!-- MENÚ INFERIOR DE CATEGORÍAS -->
+  <div class="menu">
+    <ul id="box_search">
+        <li><a href="#flores">Flores</a></li>
+        <li><a href="#bebes">Ropa de bebé</a></li>
+        <li><a href="#accesorio">Accesorios</a></li>
+        <li><a href="#trajes">Trajes</a></li>
+        <li><a href="#disfraz">Disfraces</a></li>
+        <li><a href="sobrenosotros.html">Nosotros</a></li>
+    </ul>
+  </div>
   </div>
 
   <div class="carousel">
