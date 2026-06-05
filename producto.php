@@ -76,11 +76,6 @@ $producto = mysqli_fetch_assoc($resultado);
             <?php echo $producto['descripcion']; ?>
         </p>
 
-        <p>
-            Stock disponible:
-            <?php echo $producto['stock']; ?>
-        </p>
-
         <button class="btn">
             Agregar al carrito
         </button>
