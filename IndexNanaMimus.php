@@ -43,14 +43,14 @@ include("conexion.php");
                     <a href="#" onclick="toggleFavoritos()">
                         <i class="fa-regular fa-heart"></i>
                     </a>
-                    <span class="badge-contador" id="contadorFavoritos">1</span>
+                    <span class="badge-contador" id="contadorFavoritos">0</span>
                 </div>
 
                 <div class="icon-container">
                     <a href="#">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
-                    <span class="badge-contador" id="contadorCarrito">1</span>
+                    <span class="badge-contador" id="contadorCarrito">0</span>
                 </div>
 
                 <div class="icon-container">
