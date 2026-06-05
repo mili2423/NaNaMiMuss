@@ -1,40 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
     const faqCards = document.querySelectorAll(".faq-card");
 
-    // Lógica del Acordeón Desplegable
+    // 1. Lógica del Acordeón (Abrir y Cerrar)
     faqCards.forEach((card) => {
         const questionRow = card.querySelector(".faq-question-row");
         const answerContent = card.querySelector(".faq-answer-content");
 
-        questionRow.addEventListener("click", () => {
-            const isOpen = card.classList.contains("open");
+        if (questionRow && answerContent) {
+            questionRow.addEventListener("click", function () {
+                const isOpen = card.classList.contains("open");
 
-            // Cerrar todos los demás acordeones antes de abrir uno nuevo
-            faqCards.forEach((otherCard) => {
-                otherCard.classList.remove("open");
-                otherCard.querySelector(".faq-answer-content").style.maxHeight = null;
+                // Cerrar todos los demás acordeones para un efecto limpio
+                faqCards.forEach((otherCard) => {
+                    otherCard.classList.remove("open");
+                    const otherAnswer = otherCard.querySelector(".faq-answer-content");
+                    if (otherAnswer) otherAnswer.style.maxHeight = null;
+                });
+
+                // Si no estaba abierto, lo abrimos calculando su altura dinámica
+                if (!isOpen) {
+                    card.classList.add("open");
+                    answerContent.style.maxHeight = answerContent.scrollHeight + "px";
+                }
             });
-
-            // Si no estaba abierto, lo abrimos calculando su altura dinámica
-            if (!isOpen) {
-                card.classList.add("open");
-                answerContent.style.maxHeight = answerContent.scrollHeight + "px";
-            }
-        });
+        }
     });
 });
 
-// Función global para filtrar las categorías (Todos, Envíos, etc.)
-function filtrarFaq(categoria) {
-    // Manejar estado activo en los botones
+// 2. Lógica de Filtros por Categoría (Global para que lo detecte el HTML)
+function filtrarFaq(categoria, botonActivo) {
+    // Cambiar la clase activa de los botones de categorías
     const tabs = document.querySelectorAll(".tab-btn");
     tabs.forEach(tab => tab.classList.remove("active"));
-    event.target.classList.add("active");
+    
+    // Si se hace click desde un botón válido, se le asigna la clase activa
+    if (botonActivo) {
+        botonActivo.classList.add("active");
+    }
 
-    // Mostrar u ocultar tarjetas basadas en el filtro
+    // Mostrar u ocultar las tarjetas según la categoría seleccionada
     const cards = document.querySelectorAll(".faq-card");
     cards.forEach(card => {
-        if (categoria === "todos" || card.getAttribute("data-category") === categoria) {
+        const cardCategory = card.getAttribute("data-category");
+        if (categoria === "todos" || cardCategory === categoria) {
             card.style.display = "block";
         } else {
             card.style.display = "none";

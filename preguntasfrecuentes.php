@@ -61,11 +61,11 @@ include("conexion.php");
       </div>
 
       <div class="faq-categories-tabs">
-          <button class="tab-btn active" onclick="filtrarFaq('todos')">Todos</button>
-          <button class="tab-btn" onclick="filtrarFaq('envios')">Envíos</button>
-          <button class="tab-btn" onclick="filtrarFaq('productos')">Productos</button>
-          <button class="tab-btn" onclick="filtrarFaq('pedidos')">Pedidos</button>
-          <button class="tab-btn" onclick="filtrarFaq('pagos')">Pagos</button>
+          <button class="tab-btn active" onclick="filtrarFaq('todos', this)">Todos</button>
+          <button class="tab-btn" onclick="filtrarFaq('envios', this)">Envíos</button>
+          <button class="tab-btn" onclick="filtrarFaq('productos', this)">Productos</button>
+          <button class="tab-btn" onclick="filtrarFaq('pedidos', this)">Pedidos</button>
+          <button class="tab-btn" onclick="filtrarFaq('pagos', this)">Pagos</button>
       </div>
 
       <div class="faq-wrapper">
@@ -288,7 +288,7 @@ include("conexion.php");
 
     <div class="footer-bottom">
       <div class="bottom-container">
-        <p class="copyright">&copy; 2026 Nana Mimus. Hecho con ❤️ para ti</p>
+        <p class="copyright">© 2026 Nana Mimus. Hecho con ❤️ para ti</p>
         <div class="bottom-links">
           <a href="#">Términos y Condiciones</a>
           <a href="#">Política de Privacidad</a>
