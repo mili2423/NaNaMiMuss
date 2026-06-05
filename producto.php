@@ -35,50 +35,23 @@ $producto = mysqli_fetch_assoc($resultado);
 </head>
 <body class="body-producto-detalle">
 
-  <div class="navfija">
+   <div class="navfija">
     <div class="navbar">
         
         <div class="navbar-left">
             <a href="indexNanaMimus.php">
-                <img src="NanaMimus/logotipo.jpg" alt="Logo Nana Mimus" class="logo-tienda-horizontal">
+                <img src="NanaMimus/logotipo.jpg" alt="Logo Nana Mimus" class="logo-redondo-tienda">
             </a>
         </div>
 
         <div class="navbar-search">
             <form action="indexNanaMimus.php" method="GET" class="search-form">
-                <input type="text" name="buscar" placeholder="¿Qué estás buscando?...">
+                <input type="text" name="buscar" placeholder="¿Qué estás buscando?..." value="<?php echo isset($_GET['buscar']) ? htmlspecialchars($_GET['buscar']) : ''; ?>">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
 
-        <div class="navbar-right-container">
-            <a href="preguntasfrecuentes.html" class="btn-ayuda">Ayuda</a>
-            
-            <div class="navbar-icons">
-                <div class="icon-container">
-                    <a href="#" onclick="toggleFavoritos()">
-                        <i class="fa-regular fa-heart"></i>
-                    </a>
-                    <span class="badge-contador" id="contadorFavoritos">1</span>
-                </div>
-
-                <div class="icon-container">
-                    <a href="#">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
-                    <span class="badge-contador" id="contadorCarrito">1</span>
-                </div>
-
-                <div class="icon-container">
-                    <a href="micuenta.html">
-                        <i class="fa-regular fa-user"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-  </div>
+</div>
 
   <div class="main-wrapper">
       
