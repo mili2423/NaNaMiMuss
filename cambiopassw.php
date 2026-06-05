@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $clave   = $_POST['clave'] ?? '';
     if ($usuario === "admin" && $clave === "1234") {
      
-        header("Location: IndexNanaMimus.html");
+        header("Location: IndexNanaMimus.php");
         exit();
     } else {
         echo "<script>
