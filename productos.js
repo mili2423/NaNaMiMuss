@@ -1,3 +1,27 @@
+// Clase para definir productos
+class Producto {
+  constructor(
+    id,
+    nombre,
+    precio,
+    imagenes,
+    categoria,
+    descripcion,
+    especificaciones,
+    subcategoria,
+    opcion
+  ) {
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.imagenes = imagenes;
+    this.categoria = categoria;
+    this.descripcion = descripcion;
+    this.especificaciones = especificaciones;
+    this.subcategoria = subcategoria;
+    this.opcion = opcion;
+  }
+}
 fetch("productos.php")
   .then(response => response.json())
   .then(productos => {
