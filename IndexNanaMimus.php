@@ -115,7 +115,6 @@ if ($resultado && $resultado->num_rows > 0) {
 ?>
 
 </section>
-<p><?php echo $producto['imagen']; ?></p>
 </section>
 
 </section>
