@@ -34,38 +34,32 @@ include("conexion.php");
             </form>
         </div>
 
-        <div class="navbar-right-container">
+<div class="navbar-right-container">
+            
+            <a href="preguntasfrecuentes.html" class="btn-ayuda">Ayuda</a>
+
             <div class="navbar-icons">
-                <div class="iconcar">
-                    <a href="#">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                    </a>
-                    <span class="contadorFavoritos" id="contadorCarrito">0</span>
-                    <div class="tooltip">Mi Carrito</div>
-                </div>
-
-                <div class="iconcom">
-                    <a href="preguntasfrecuentes.html">
-                        <i class="fa-solid fa-comments"></i>
-                    </a>
-                    <div class="tooltip">Preguntas Frecuentes</div>
-                </div>
-
-                <div class="iconcora">
+                <div class="icon-container">
                     <a href="#" onclick="toggleFavoritos()">
-                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-regular fa-heart"></i>
                     </a>
-                    <span class="contadorFavoritos" id="contadorFavoritos">0</span>
-                    <div class="tooltip">Mis Favoritos</div>
+                    <span class="badge-contador" id="contadorFavoritos">1</span>
                 </div>
 
-                <div class="iconuser">
+                <div class="icon-container">
+                    <a href="#">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <span class="badge-contador" id="contadorCarrito">1</span>
+                </div>
+
+                <div class="icon-container">
                     <a href="micuenta.html">
                         <i class="fa-regular fa-user"></i>
                     </a>
-                    <div class="tooltip">Mi Cuenta</div>
                 </div>
             </div>
+
         </div>
 
     </div>

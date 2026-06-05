@@ -246,7 +246,9 @@ select:focus {
 option {
   padding: 10px;
 }
-/* --- CONFIGURACIÓN GLOBAL --- */
+/* ==========================================
+   1. CONFIGURACIÓN GLOBAL Y TIPOGRAFÍA
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -254,13 +256,20 @@ option {
     font-family: 'Poppins', sans-serif;
 }
 
-/* --- CABECERA FIJA Y NAVBAR --- */
+body {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* ==========================================
+   2. CABECERA FIJA Y NAVBAR PRINCIPAL
+   ========================================== */
 .navfija {
     position: sticky;
     top: 0;
     z-index: 1000;
     background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     width: 100%;
 }
 
@@ -277,9 +286,9 @@ option {
 .logo-redondo-tienda {
     width: 60px;
     height: 60px;
-    border-radius: 50%; /* Lo hace un círculo perfecto */
-    object-fit: cover; /* Evita que la imagen se deforme */
-    border: 2px solid #ffb6c1; /* Delicado borde rosa */
+    border-radius: 50%; /* Hace la imagen un círculo perfecto */
+    object-fit: cover;   /* Evita que el logo se estire o deforme */
+    border: 2px solid #ffb6d5; /* Fino borde rosa pastel */
     display: block;
     transition: transform 0.3s ease;
 }
@@ -288,9 +297,11 @@ option {
     transform: scale(1.05);
 }
 
-/* --- BUSCADOR ESTILO FIGMA --- */
+/* ==========================================
+   3. BUSCADOR CENTRADO
+   ========================================== */
 .navbar-search {
-    flex: 0 1 500px;
+    flex: 0 1 500px; /* Ancho máximo de 500px para el buscador */
     margin: 0 20px;
 }
 
@@ -310,8 +321,8 @@ option {
 }
 
 .search-form input:focus {
-    border-color: #ffb6c1;
-    box-shadow: 0 0 5px rgba(255, 182, 193, 0.5);
+    border-color: #ff3b93;
+    box-shadow: 0 0 5px rgba(255, 59, 147, 0.3);
 }
 
 .search-form button {
@@ -329,80 +340,90 @@ option {
 }
 
 .search-form button:hover {
-    background: #ff6f91;
+    background: #ff3b93;
 }
 
-/* --- CONTENEDOR DERECHO E ICONOS --- */
+/* ==========================================
+   4. BLOQUE DERECHO (AYUDA e ICONOS FIGMA)
+   ========================================== */
 .navbar-right-container {
     display: flex;
     align-items: center;
+    gap: 35px; /* Distancia exacta entre botón Ayuda e Iconos */
 }
 
+/* --- BOTÓN AYUDA (ESTILO PÍLDORA) --- */
+.btn-ayuda {
+    display: inline-block;
+    text-decoration: none;
+    color: #ff3b93; /* Rosa vibrante de tu captura */
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 30px;
+    border: 1px solid #ffb6d5; /* Borde sutil */
+    border-radius: 50px; /* Forma de píldora redonda */
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-ayuda:hover {
+    background-color: #fff0f5;
+    border-color: #ff3b93;
+}
+
+/* --- ICONOS Y CONTADORES --- */
 .navbar-icons {
     display: flex;
-    gap: 25px;
     align-items: center;
+    gap: 30px; /* Separación uniforme entre los 3 iconos */
 }
 
-.iconcar, .iconcom, .iconcora, .iconuser {
+.icon-container {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.navbar-icons a {
-    color: #333333;
-    font-size: 22px;
-    transition: color 0.3s;
+.navbar-icons i {
+    color: #ff3b93; /* Color rosa exacto para los trazos */
+    font-size: 26px; /* Tamaño adaptado idéntico a Figma */
+    transition: transform 0.2s ease;
 }
 
-.navbar-icons a:hover {
-    color: #ff6f91;
+.navbar-icons a:hover i {
+    transform: scale(1.08);
 }
 
-.contadorFavoritos {
+/* --- CÍRCULO CONTADOR ROSA SÓLIDO --- */
+.badge-contador {
     position: absolute;
-    top: -8px;
+    top: -10px;
     right: -10px;
-    background-color: #ff6f91;
-    color: white;
+    background-color: #ff3b93; /* Fondo rosa fuerte de tu imagen */
+    color: #ffffff; /* Número 1 en blanco */
     font-size: 11px;
     font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%; /* Hace que sea un círculo redondo perfecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra idéntica al diseño */
+    pointer-events: none; /* Evita que moleste al hacer clic al icono */
 }
 
-/* --- TOOLTIPS --- */
-.tooltip {
-    visibility: hidden;
-    position: absolute;
-    top: 130%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333333;
-    color: #ffffff;
-    text-align: center;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 10;
-}
-
-.iconcar:hover .tooltip, 
-.iconcom:hover .tooltip, 
-.iconcora:hover .tooltip,
-.iconuser:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* --- MENÚ DE CATEGORÍAS --- */
+/* ==========================================
+   5. MENÚ INFERIOR DE CATEGORÍAS
+   ========================================== */
 .menu {
-    background-color: #fff5f6;
+    background-color: #fff5f6; /* Fondo rosa pastel muy suave */
     border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
+    width: 100%;
 }
 
 .menu ul {
@@ -425,7 +446,7 @@ option {
 }
 
 .menu ul a:hover {
-    color: #ff6f91;
+    color: #ff3b93;
 }
 /* Responsive */
 @media (max-width: 1100px) {
