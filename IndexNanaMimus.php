@@ -1,6 +1,4 @@
- <?php
-include("conexion.php");
-?>
+
 <!DOCTYPE html>
 <!-- EDITADO -->
 <html lang="es">
