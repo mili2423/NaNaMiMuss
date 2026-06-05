@@ -8,7 +8,7 @@
   <title>Index | Nana Mimus</title>
    <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="mas_prod.css"><!--CSS DE LA PAGINA-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">include("conexion.php"); 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
   </head>
 <body>
   <!-- NAVBAR SUPERIOR -->
@@ -104,7 +104,7 @@ if ($resultado && $resultado->num_rows > 0) {
             $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
         </p>
     <button class="btn-carrito" data-id="<?php echo $producto['id']; ?>">
-        Agregar al carrito
+        🛒 Agregar al carrito
     </button>
 
     </div>
