@@ -1,28 +1,3 @@
-// Clase para definir productos
-class Producto {
-  constructor(
-    id,
-    nombre,
-    precio,
-    imagenes,
-    categoria,
-    descripcion,
-    especificaciones,
-    subcategoria,
-    opcion
-  ) {
-    this.id = id;
-    this.nombre = nombre;
-    this.precio = precio;
-    this.imagenes = imagenes;
-    this.categoria = categoria;
-    this.descripcion = descripcion;
-    this.especificaciones = especificaciones;
-    this.subcategoria = subcategoria;
-    this.opcion = opcion;
-  }
-}
-
 fetch("productos.php")
   .then(response => response.json())
   .then(productos => {
@@ -31,41 +6,39 @@ fetch("productos.php")
 
     productos.forEach(producto => {
 
-     const card = `
+      contenedor.innerHTML += `
+      
+      <div class="producto-card">
 
-<div class="producto-card">
+          <div class="producto-img">
 
-    <div class="producto-img">
-        <img src="${producto.imagen1}" alt="${producto.nombre}">
-    </div>
+              <a href="producto.php?id=${producto.id}">
+                  <img src="${producto.imagen1}" alt="${producto.nombre}">
+              </a>
 
-    <div class="producto-info">
+              <button class="btn-favorito">
+                  <i class="fa-regular fa-heart"></i>
+              </button>
 
-        <h3>${producto.nombre}</h3>
+          </div>
 
-        <p class="precio">
-            $${producto.precio}
-        </p>
+          <div class="producto-info">
 
-        <p class="categoria">
-            ${producto.categoria}
-        </p>
+              <h3>${producto.nombre}</h3>
 
-        <button class="btn-comprar">
-            Ver producto
-        </button>
+              <p class="precio">
+                  $${parseFloat(producto.precio).toLocaleString()}
+              </p>
 
-    </div>
+              <button class="btn-carrito">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  Agregar al carrito
+              </button>
 
-</div>
+          </div>
 
-`;
+      </div>
 
-      contenedor.innerHTML += card;
-
+      `;
     });
-
-  })
-  .catch(error => {
-    console.error("Error:", error);
   });

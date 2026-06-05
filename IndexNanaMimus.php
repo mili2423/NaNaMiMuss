@@ -148,36 +148,8 @@ session_start();?>
  </div> 
 </div>
 </main>
-<script>
-let productos = [];
-
-fetch("productos.php")
-  .then(response => response.json())
-  .then(data => {
-
-    productos = data;
-
-    const contenedor = document.querySelector(".contenedor-productos");
-
-    productos.forEach(producto => {
-
-      contenedor.innerHTML += `
-      
-      <div class="card-producto">
-
-        <img src="${producto.imagen1}" alt="${producto.nombre}">
-
-        <h3>${producto.nombre}</h3>
-
-        <p>$${producto.precio}</p>
-
-      </div>
-
-      `;
-
-    });
-
-  });
+<div class="contenedor-productos"></div>
+<script src="productos.js"></script>
 
 const buscador = document.getElementById("buscador");
 
