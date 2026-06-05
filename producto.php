@@ -51,6 +51,48 @@ $producto = mysqli_fetch_assoc($resultado);
             </form>
         </div>
 
+<div class="navbar-right-container">
+            
+            <a href="preguntasfrecuentes.html" class="btn-ayuda">Ayuda</a>
+
+            <div class="navbar-icons">
+                <div class="icon-container">
+                    <a href="#" onclick="toggleFavoritos()">
+                        <i class="fa-regular fa-heart"></i>
+                    </a>
+                    <span class="badge-contador" id="contadorFavoritos">1</span>
+                </div>
+
+                <div class="icon-container">
+                    <a href="#">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <span class="badge-contador" id="contadorCarrito">1</span>
+                </div>
+
+                <div class="icon-container">
+                    <a href="micuenta.html">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+  </div>
+
+  </div>
+
+  <div class="carousel">
+    <ul><!--30/10/25-->
+      <li><img width="1580" height="450 " src="NanaMimus/carrr1.jpg" alt=""></li><!--aca esta-->
+        <li><img width="1580" height="450 " src="NanaMimus/carrr2.jpg"alt=""></li>
+        <li><img width="1580" height="450 " src="NanaMimus/carrr3.jpg" alt=""></li><!--aca esta-->
+        <li><img width="1580" height="450 " src="NanaMimus/prueba2.jpg" alt=""></li><!--aca esta-->
+        <li><img width="1580" height="450 " src="NanaMimus/carrr7.jpg"alt=""></li>
+    </ul>
+</div>
 </div>
 
   <div class="main-wrapper">
