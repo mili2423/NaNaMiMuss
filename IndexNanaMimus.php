@@ -1,4 +1,4 @@
-
+<?php include("conexion.php"); ?>
 <!DOCTYPE html>
 <!-- EDITADO -->
 <html lang="es">
@@ -58,7 +58,7 @@
   </div>
 
   <div class="carousel">
-    <ul>
+    <ul><!--30/10/25-->
       <li><img width="1580" height="450 " src="NanaMimus/carrr1.jpg" alt=""></li><!--aca esta-->
         <li><img width="1580" height="450 " src="NanaMimus/carrr2.jpg"alt=""></li>
         <li><img width="1580" height="450 " src="NanaMimus/carrr3.jpg" alt=""></li><!--aca esta-->
@@ -68,7 +68,7 @@
 </div>
 <div class="contenedor-productos">
 <?php
-
+include("conexion.php");
 
 $sql = "SELECT * FROM productos";
 $resultado = $conexion->query($sql);
@@ -103,9 +103,8 @@ if ($resultado && $resultado->num_rows > 0) {
         <p class="precio">
             $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
         </p>
-
     <button class="btn-carrito" data-id="<?php echo $producto['id']; ?>">
-         Agregar al carrito
+        Agregar al carrito
     </button>
 
     </div>
