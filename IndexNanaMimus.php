@@ -19,17 +19,7 @@
         <a href="IndexNanaMimus.php">
           <img src="NanaMimus/logotipo.jpg" alt="Logo" class="logo">
         </a>
-        </div> 
-        <input type="text" id="buscador" class="search-bar" placeholder="Buscar...">
-        <div class="icons">
-           <?php
-session_start();?>   
-          <div class="iconcu">
-           <a href="<?php echo isset($_SESSION['usuario']) ? 'perfil.php' : 'iniciosesion.html'; ?>">
-        <i class="fa-solid fa-user"></i>
-        <div class="tooltip"><?php echo isset($_SESSION['usuario']) ? 'Mi perfil' : 'Ingresar'; ?></div>
-    </a>
-         </div>
+        </div>
         <div class="iconcar">
           <a href="#">
             <i class="fa-solid fa-basket-shopping"></i>
@@ -65,63 +55,7 @@ session_start();?>
     <a href="sobrenosotros.html">Nosotros</a>
     </ul>
   </div>
-  <!-- <div id="cover-ctn-search">nova estp</div> -->
   </div>
-
-<!-- Popup de favoritos -->
-<div class="favoritos-popup" id="favoritosPopup" style="display:none;" ><!-- oculta un elemento HTML por completo, eliminándolo tanto del diseño visual como de la accesibilidad,-->
-  <div class="favoritos-header">
-    <h2>Mis Favoritos</h2>
-    <button class="cerrar-favorito close-btn jsmodalclose" onclick="toggleFavoritos()">✖</button>
-
-  </div>
-  <div class="favoritos-body">
-    <p id="mensajeVacio">No hay favoritos todavia....</p>
-    <div id="listaFavoritos"></div>
-  </div>
-</div>
-
-  <!-- Popup carrito -->
-<div class="cart-sidebar" id="Mimodal" style="display:none;">
-  <!-- Header fijo -->
-  <div class="cart-header">
-    <h2>Carrito de Compras</h2>
-    <button class="cerrar-favorito close-btn jsmodalclose" id="jsmodalclose" aria-label="Cerrar carrito" onclick="toggleCarrito()">✖</button>
-  </div>
-
-  <!-- Contenido con scroll -->
-  <div class="cart-body">
-    <div id="cart-items"></div>
-  </div>
-
-  <!-- Resumen fijo al fondo -->
-  <div class="cart-summary" style="display: none;">
-    <p class="subtotalpop">
-      <strong>Subtotal (sin envío):</strong> <span id="subtotal-final">$0.00</span>
-    </p>
-
-    <div class="payment-methods">
-      <label class="radio-transfer">
-        <input type="radio" name="metodo-pago" value="transferencia">
-        <span>Transferencia (15% OFF)</span>
-      </label>
-
-      <label class="radio-cash">
-        <input type="radio" name="metodo-pago" value="efectivo" checked>
-        <span>Efectivo</span>
-      </label>
-    </div>
-
-    <p class="totalpop">Total: <strong id="cart-total-final">$0.00</strong></p>
-    <p class="transferpop">Con transferencia: <span id="cart-totaltrans">$0.00</span></p>
-
-    <button class="btn-buy">Iniciar compra</button>
-    <a href="#" class="link">Ver más productos</a>
-  </div>
-</div>
-
-
-
 
   <div class="carousel">
     <ul><!--30/10/25-->
@@ -132,50 +66,7 @@ session_start();?>
         <li><img width="1580" height="450 " src="NanaMimus/carrr7.jpg"alt=""></li>
     </ul>
 </div>
-
-<main id="lista-categorias"  class="productos-secciones" ><!--trae las tarjetas y cat prusecc es el estilo en css-->
-<div class="contenedor-productos">
- <div id="btn-flores">
-    <div class="button-container">
-         <a href="flores.html" class="learn-more">
-        <span aria-hidden="true" class="circle">
-        <span class="icon arrow"></span>
-       </span><!--agrupar o dar estilo a partes de texto o elementos en línea sin afectar el flujo del documento.-->
-       <span class="button-text">Ver más</span>
-       </a>
-      </div>
-</div>
- </div> 
-</div>
-</main>
 <div class="contenedor-productos"></div>
-<script src="productos.js"></script>
-
-const buscador = document.getElementById("buscador");
-
-buscador.addEventListener("keydown", (e) => {
-
-  if (e.key === "Enter") {
-
-    const query = buscador.value.trim().toLowerCase();
-
-    const resultados = productos.filter(
-      (p) =>
-        p.nombre.toLowerCase().includes(query) ||
-        p.categoria.toLowerCase().includes(query)
-    );
-
-    localStorage.setItem(
-      "resultadosBusqueda",
-      JSON.stringify(resultados)
-    );
-
-    window.location.href = "resultados.html";
-  }
-
-});
-</script>
-
 <!-- Scripts -->
 <script src="productos.js"></script>
 <script src="index.js"></script>
