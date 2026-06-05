@@ -323,14 +323,20 @@ option {
     background: #ff6f91;
 }
 
-/* --- ICONOS Y HOVERS --- */
+/* --- CONTENEDOR DERECHO (ICONOS + CUENTA) --- */
+.navbar-right-container {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Separación entre el bloque de iconos y la foto de perfil */
+}
+
 .navbar-icons {
     display: flex;
     gap: 25px;
     align-items: center;
 }
 
-.iconcar, .iconcom, .iconcora {
+.iconcar, .iconcom, .iconcora, .navbar-user {
     position: relative;
     display: inline-block;
 }
@@ -357,7 +363,24 @@ option {
     border-radius: 50%;
 }
 
-/* Tooltips */
+/* --- LOGO REDONDO DE CUENTA --- */
+.logo-redondo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%; /* Hace que la imagen sea un círculo perfecto */
+    object-fit: cover; /* Evita que la imagen se estire o deforme */
+    border: 2px solid #ffb6c1; /* Delicado borde rosa estilo Figma */
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: block;
+}
+
+.logo-redondo:hover {
+    transform: scale(1.05);
+    border-color: #ff6f91;
+}
+
+/* --- TOOLTIPS --- */
 .tooltip {
     visibility: hidden;
     position: absolute;
@@ -378,7 +401,8 @@ option {
 
 .iconcar:hover .tooltip, 
 .iconcom:hover .tooltip, 
-.iconcora:hover .tooltip {
+.iconcora:hover .tooltip,
+.navbar-user:hover .tooltip {
     visibility: visible;
     opacity: 1;
 }

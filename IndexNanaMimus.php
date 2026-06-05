@@ -8,30 +8,25 @@ include("conexion.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index | Nana Mimus</title>
     
-    <!-- Fuente tipográfica estilo Figma (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Hojas de estilo e Iconos -->
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="mas_prod.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
 </head>
 <body>
 
-  <!-- NAVBAR PRINCIPAL -->
   <div class="navfija">
     <div class="navbar">
         
-        <!-- Logo -->
         <div class="navbar-left">
             <a href="indexNanaMimus.php">
                 <img src="NanaMimus/logotipo.jpg" alt="Logo" class="logo">
             </a>
         </div>
 
-        <!-- Barra de Buscador integrada -->
         <div class="navbar-search">
             <form action="indexNanaMimus.php" method="GET" class="search-form">
                 <input type="text" name="buscar" placeholder="¿Qué estás buscando?..." value="<?php echo isset($_GET['buscar']) ? htmlspecialchars($_GET['buscar']) : ''; ?>">
@@ -39,36 +34,43 @@ include("conexion.php");
             </form>
         </div>
 
-        <!-- Iconos y Contadores -->
-        <div class="navbar-icons">
-            <div class="iconcar">
-                <a href="#">
-                    <i class="fa-solid fa-basket-shopping"></i>
-                </a>
-                <span class="contadorFavoritos" id="contadorCarrito">0</span>
-                <div class="tooltip">Mi Carrito</div>
+        <div class="navbar-right-container">
+            <div class="navbar-icons">
+                <div class="iconcar">
+                    <a href="#">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </a>
+                    <span class="contadorFavoritos" id="contadorCarrito">0</span>
+                    <div class="tooltip">Mi Carrito</div>
+                </div>
+
+                <div class="iconcom">
+                    <a href="preguntasfrecuentes.html">
+                        <i class="fa-solid fa-comments"></i>
+                    </a>
+                    <div class="tooltip">Preguntas Frecuentes</div>
+                </div>
+
+                <div class="iconcora">
+                    <a href="#" onclick="toggleFavoritos()">
+                        <i class="fa-solid fa-heart"></i>
+                    </a>
+                    <span class="contadorFavoritos" id="contadorFavoritos">0</span>
+                    <div class="tooltip">Mis Favoritos</div>
+                </div>
             </div>
 
-            <div class="iconcom">
-                <a href="preguntasfrecuentes.html">
-                    <i class="fa-solid fa-comments"></i>
+            <div class="navbar-user">
+                <a href="micuenta.html">
+                    <img src="NanaMimus/logotipo.jpg" alt="Mi Cuenta" class="logo-redondo">
                 </a>
-                <div class="tooltip">Preguntas Frecuentes</div>
-            </div>
-
-            <div class="iconcora">
-                <a href="#" onclick="toggleFavoritos()">
-                    <i class="fa-solid fa-heart"></i>
-                </a>
-                <span class="contadorFavoritos" id="contadorFavoritos">0</span>
-                <div class="tooltip">Mis Favoritos</div>
+                <div class="tooltip">Mi Cuenta</div>
             </div>
         </div>
 
     </div>
   </div>
 
-  <!-- MENÚ INFERIOR DE CATEGORÍAS -->
   <div class="menu">
     <ul id="box_search">
         <li><a href="#flores">Flores</a></li>
