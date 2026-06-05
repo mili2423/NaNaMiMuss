@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 
 $sql = "SELECT * FROM productos WHERE id = $id";
-$resultado = mysqli_query($conn, $sql);
+$resultado = mysqli_query($conexion, $sql);
 
 if (mysqli_num_rows($resultado) == 0) {
     die("Producto no encontrado");
