@@ -81,7 +81,7 @@ $resultado = mysqli_query($conexion, $sql);
     <div class="producto-card">
 
         <a href="producto.php?id=<?php echo $producto['id']; ?>">
-            <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
+           <img src="<?php echo $producto['imagen']; ?>" alt="">
         </a>
 
         <?php if($producto['descuento'] > 0){ ?>
