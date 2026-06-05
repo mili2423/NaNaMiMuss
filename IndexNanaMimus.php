@@ -67,42 +67,57 @@
     </ul>
 </div>
 <div class="contenedor-productos">
-  <?php
+ <?php
 include("conexion.php");
 
 $sql = "SELECT * FROM productos";
-$resultado = mysqli_query($conexion, $sql);
+$resultado = $conexion->query($sql);
 ?>
 
 <section class="productos-container">
 
-<?php while($producto = mysqli_fetch_assoc($resultado)) { ?>
+<?php
+if ($resultado && $resultado->num_rows > 0) {
+
+    while($producto = $resultado->fetch_assoc()) {
+?>
 
     <div class="producto-card">
 
         <a href="producto.php?id=<?php echo $producto['id']; ?>">
-           <img src="<?php echo $producto['imagen']; ?>" alt="">
+
+            <img
+                src="<?php echo htmlspecialchars($producto['imagen']); ?>"
+                alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
+            >
+
         </a>
 
-        <?php if($producto['descuento'] > 0){ ?>
+        <?php if(isset($producto['descuento']) && $producto['descuento'] > 0) { ?>
             <span class="badge-descuento">
                 -<?php echo $producto['descuento']; ?>%
             </span>
         <?php } ?>
 
-        <h3><?php echo $producto['nombre']; ?></h3>
+        <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
 
         <p class="precio">
-            $<?php echo number_format($producto['precio'],0,',','.'); ?>
+            $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
         </p>
-
-        <button class="btn-carrito">
-            Agregar al carrito
-        </button>
 
     </div>
 
-<?php } ?>
+<?php
+    }
+
+} else {
+
+    echo "<p>No hay productos cargados.</p>";
+
+}
+?>
+
+</section>
 
 </section>
 </div>
