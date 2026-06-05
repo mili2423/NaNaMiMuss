@@ -104,7 +104,7 @@ if ($resultado && $resultado->num_rows > 0) {
             $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
         </p>
     <button class="btn-carrito" data-id="<?php echo $producto['id']; ?>">
-        🛒 Agregar al carrito
+         Agregar al carrito
     </button>
 
     </div>
