@@ -36,7 +36,7 @@ include("conexion.php");
 
 <div class="navbar-right-container">
             
-            <a href="preguntasfrecuentes.html" class="btn-ayuda">Ayuda</a>
+            <a href="preguntasfrecuentes.php" class="btn-ayuda">Ayuda</a>
 
             <div class="navbar-icons">
                 <div class="icon-container">
@@ -54,7 +54,7 @@ include("conexion.php");
                 </div>
 
                 <div class="icon-container">
-                    <a href="micuenta.html">
+                    <a href="iniciosesion.html">
                         <i class="fa-regular fa-user"></i>
                     </a>
                 </div>
