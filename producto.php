@@ -1,12 +1,14 @@
 <?php
 include("conexion.php");
 
+// Verificamos que venga el ID por la URL
 if (!isset($_GET['id'])) {
     die("Producto no encontrado");
 }
 
 $id = intval($_GET['id']);
 
+// Consulta a la base de datos para traer el producto seleccionado
 $sql = "SELECT * FROM productos WHERE id = $id";
 $resultado = mysqli_query($conexion, $sql);
 
@@ -20,69 +22,202 @@ $producto = mysqli_fetch_assoc($resultado);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $producto['nombre']; ?></title>
-
-    <style>
-        .contenedor{
-            max-width:1200px;
-            margin:50px auto;
-            display:flex;
-            gap:50px;
-            padding:20px;
-        }
-
-        .imagen1 img{
-            width:450px;
-            border-radius:20px;
-        }
-
-        .info{
-            flex:1;
-        }
-
-        .precio{
-            font-size:32px;
-            color:#ff6f91;
-            font-weight:bold;
-        }
-
-        .btn{
-            background:#ffb6c1;
-            color:white;
-            border:none;
-            padding:15px 30px;
-            border-radius:10px;
-            cursor:pointer;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $producto['nombre']; ?> | Nana Mimus</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+    
+    <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<body class="body-producto-detalle">
 
-<div class="contenedor">
+  <div class="navfija">
+    <div class="navbar">
+        
+        <div class="navbar-left">
+            <a href="indexNanaMimus.php">
+                <img src="NanaMimus/logotipo.jpg" alt="Logo Nana Mimus" class="logo-tienda-horizontal">
+            </a>
+        </div>
 
-    <div class="imagen">
-        <img src="<?php echo $producto['imagen1']; ?>" alt="">
+        <div class="navbar-search">
+            <form action="indexNanaMimus.php" method="GET" class="search-form">
+                <input type="text" name="buscar" placeholder="¿Qué estás buscando?...">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+
+        <div class="navbar-right-container">
+            <a href="preguntasfrecuentes.html" class="btn-ayuda">Ayuda</a>
+            
+            <div class="navbar-icons">
+                <div class="icon-container">
+                    <a href="#" onclick="toggleFavoritos()">
+                        <i class="fa-regular fa-heart"></i>
+                    </a>
+                    <span class="badge-contador" id="contadorFavoritos">1</span>
+                </div>
+
+                <div class="icon-container">
+                    <a href="#">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <span class="badge-contador" id="contadorCarrito">1</span>
+                </div>
+
+                <div class="icon-container">
+                    <a href="micuenta.html">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="main-wrapper">
+      
+      <nav class="breadcrumbs">
+          <a href="indexNanaMimus.php">Inicio</a> / <span class="current"><?php echo $producto['nombre']; ?></span>
+      </nav>
+
+      <a href="indexNanaMimus.php" class="btn-back">
+          <i class="fa-solid fa-arrow-left"></i> Volver a productos
+      </a>
+
+      <div class="contenedor-detalle-producto">
+          
+          <div class="imagen-producto-wrapper">
+              <img src="<?php echo $producto['imagen1']; ?>" alt="<?php echo $producto['nombre']; ?>" class="img-principal">
+              <span class="badge-hecho-mano">🌸 Hecho a Mano</span>
+          </div>
+
+          <div class="info-producto-wrapper">
+              
+              <span class="categoria-tag">🌸 Flores Tejidas</span>
+              
+              <h1 class="titulo-producto"><?php echo $producto['nombre']; ?></h1>
+
+              <div class="rating-box">
+                  <div class="stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="rating-num">4.9</span>
+                  <span class="reviews-count">(72 reseñas)</span>
+              </div>
+
+              <p class="precio-producto">
+                  $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
+              </p>
+
+              <p class="descripcion-texto">
+                  <?php echo $producto['descripcion']; ?>
+              </p>
+
+              <ul class="features-list">
+                  <li><span class="check-icon">✓</span> Tejido 100% a mano</li>
+                  <li><span class="check-icon">✓</span> Hilo algodón mercerizado</li>
+                  <li><span class="check-icon">✓</span> Aprox. 8 rosas por ramo</li>
+                  <li><span class="check-icon">✓</span> Cada pieza es única</li>
+              </ul>
+
+              <div class="actions-row">
+                  <button class="btn-add-cart" data-id="<?php echo $producto['id']; ?>">
+                      <i class="fa-solid fa-cart-shopping"></i> Agregar al Carrito
+                  </button>
+                  <button class="btn-fav-square">
+                      <i class="fa-regular fa-heart"></i>
+                  </button>
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      
+      <div class="footer-section brand-info">
+        <div class="brand-title">
+          <span class="brand-logo-icon">🌸</span>
+          <h4>Nana Mimus</h4>
+        </div>
+        <p class="brand-desc">Tu tienda de accesorios, flores tejidas y regalos aesthetic. Hecho con amor para momentos especiales.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/nana_mimus/" target="_blank" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-circle"><i class="fa-solid fa-heart"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section contacto">
+        <div class="section-title">
+          <i class="fa-regular fa-envelope"></i>
+          <h4>Contacto</h4>
+        </div>
+        <p><i class="fa-solid fa-envelope"></i> hola@nanamimus.com</p>
+        <p><i class="fa-solid fa-phone"></i> +52 123 456 7890</p>
+        <p><i class="fa-solid fa-location-dot"></i> Ciudad de México, México</p>
+      </div>
+
+      <div class="footer-section horarios">
+        <div class="section-title">
+          <i class="fa-regular fa-clock"></i>
+          <h4>Horarios</h4>
+        </div>
+        <div class="schedule-grid">
+          <span class="day">Lunes - Viernes</span> <span class="time">9:00 - 18:00</span>
+          <span class="day">Sábado</span> <span class="time">10:00 - 16:00</span>
+          <span class="day">Domingo</span> <span class="time closing">Cerrado</span>
+        </div>
+        <div class="info-badge highlight-badge">
+          <p>🚀 Envío gratis en compras mayores a $50</p>
+        </div>
+      </div>
+
+      <div class="footer-section pagos">
+        <div class="section-title">
+          <i class="fa-regular fa-credit-card"></i>
+          <h4>Métodos de Pago</h4>
+        </div>
+        <div class="payment-cards">
+          <span class="card-brand">VISA</span>
+          <span class="card-brand">MC</span>
+          <span class="card-brand">AMEX</span>
+        </div>
+        <div class="info-badge secure-badge">
+          <h5>Pago seguro</h5>
+          <p>Todos tus datos están protegidos con encriptación SSL</p>
+        </div>
+      </div>
+
     </div>
 
-    <div class="info">
-
-        <h1><?php echo $producto['nombre']; ?></h1>
-
-        <p class="precio">
-            $<?php echo number_format($producto['precio'],0,',','.'); ?>
-        </p>
-
-        <p>
-            <?php echo $producto['descripcion']; ?>
-        </p>
-
-        <button class="btn">
-            Agregar al carrito
-        </button>
-
+    <div class="footer-bottom">
+      <div class="bottom-container">
+        <p class="copyright">&copy; 2026 Nana Mimus. Hecho con ❤️ para ti</p>
+        <div class="bottom-links">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="preguntasfrecuentes.html">Preguntas Frecuentes</a>
+        </div>
+      </div>
     </div>
+  </footer>
 
-</div>
+  <script src="productos.js"></script>
+  <script src="carrito.js"></script>
+  <script src="favoritos.js"></script>
 
 </body>
 </html>
