@@ -273,10 +273,19 @@ option {
     margin: 0 auto;
 }
 
-.logo {
+/* --- LOGO REDONDO DE LA TIENDA (IZQUIERDA) --- */
+.logo-redondo-tienda {
+    width: 60px;
     height: 60px;
-    width: auto;
+    border-radius: 50%; /* Lo hace un círculo perfecto */
+    object-fit: cover; /* Evita que la imagen se deforme */
+    border: 2px solid #ffb6c1; /* Delicado borde rosa */
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo-redondo-tienda:hover {
+    transform: scale(1.05);
 }
 
 /* --- BUSCADOR ESTILO FIGMA --- */
@@ -323,11 +332,10 @@ option {
     background: #ff6f91;
 }
 
-/* --- CONTENEDOR DERECHO (ICONOS + CUENTA) --- */
+/* --- CONTENEDOR DERECHO E ICONOS --- */
 .navbar-right-container {
     display: flex;
     align-items: center;
-    gap: 30px; /* Separación entre el bloque de iconos y la foto de perfil */
 }
 
 .navbar-icons {
@@ -336,7 +344,7 @@ option {
     align-items: center;
 }
 
-.iconcar, .iconcom, .iconcora, .navbar-user {
+.iconcar, .iconcom, .iconcora, .iconuser {
     position: relative;
     display: inline-block;
 }
@@ -363,23 +371,6 @@ option {
     border-radius: 50%;
 }
 
-/* --- LOGO REDONDO DE CUENTA --- */
-.logo-redondo {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%; /* Hace que la imagen sea un círculo perfecto */
-    object-fit: cover; /* Evita que la imagen se estire o deforme */
-    border: 2px solid #ffb6c1; /* Delicado borde rosa estilo Figma */
-    cursor: pointer;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    display: block;
-}
-
-.logo-redondo:hover {
-    transform: scale(1.05);
-    border-color: #ff6f91;
-}
-
 /* --- TOOLTIPS --- */
 .tooltip {
     visibility: hidden;
@@ -402,7 +393,7 @@ option {
 .iconcar:hover .tooltip, 
 .iconcom:hover .tooltip, 
 .iconcora:hover .tooltip,
-.navbar-user:hover .tooltip {
+.iconuser:hover .tooltip {
     visibility: visible;
     opacity: 1;
 }

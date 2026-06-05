@@ -23,7 +23,7 @@ include("conexion.php");
         
         <div class="navbar-left">
             <a href="indexNanaMimus.php">
-                <img src="NanaMimus/logotipo.jpg" alt="Logo" class="logo">
+                <img src="NanaMimus/logotipo.jpg" alt="Logo Nana Mimus" class="logo-redondo-tienda">
             </a>
         </div>
 
@@ -58,13 +58,13 @@ include("conexion.php");
                     <span class="contadorFavoritos" id="contadorFavoritos">0</span>
                     <div class="tooltip">Mis Favoritos</div>
                 </div>
-            </div>
 
-            <div class="navbar-user">
-                <a href="micuenta.html">
-                    <img src="NanaMimus/logotipo.jpg" alt="Mi Cuenta" class="logo-redondo">
-                </a>
-                <div class="tooltip">Mi Cuenta</div>
+                <div class="iconuser">
+                    <a href="micuenta.html">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <div class="tooltip">Mi Cuenta</div>
+                </div>
             </div>
         </div>
 
