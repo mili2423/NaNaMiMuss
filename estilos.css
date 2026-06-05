@@ -246,316 +246,94 @@ select:focus {
 option {
   padding: 10px;
 }
-/* NAVBAR SUPERIOR */
-.navfija {
-  /*es la posicion del elemento */
-  position: sticky;
-  top: 0; /*la barra suga para abajo */
-  z-index: 1000; /*no se super pongan los elementos */
+.header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:white;
+    box-shadow:0 2px 20px rgba(0,0,0,.08);
 }
 
-.navbar {
-  display: flex; /* Flexbox para colocar los elementos en línea */
-  justify-content: space-between; /* Los elementos se separan a los extremos */
-  align-items: center; /* Alineación vertical centrada */
-  padding: 1rem 3rem; /* Relleno: 21rem arriba/abajo, 3rem a los lados */
-  background-color: #fdcedf; /* Fondo rosado claro */
-  padding-bottom: 1px;
+.header-top{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    padding:15px 30px;
 }
 
-.navbar-left {
-  display: flex; /* Flexbox para alinear logo y barra de búsqueda en línea */
-  align-items: center; /* Centrado vertical */
-  gap: 2rem; /* Espaciado entre el logo y la barra */
+.logo{
+    width:130px;
+    border-radius:20px;
 }
 
-.logo {
-  height: 4.2rem; /*altura*/
-  width: 4.2rem; /*ancho*/
-  object-fit: cover; /* imagen llene completamente su contenedor*/
-  border-radius: 50%;
-  border: 2px solid var(--rosa-fuerte-original); /* borde a un elemento, estilo sólido y de un color específico */
-  /* box-shadow: 0 2px 8px rgba(225, 149, 171, 0.1); Mantengo el sombreado */
-  /* background: var(--gris-muy-claro); Nuevo color */
+.search-bar{
+    flex:1;
+    max-width:600px;
+    position:relative;
 }
 
-.search-bar {
-  /*buscador */
-  padding: 0.5rem 1.5rem; /*hace mas chiquito el buscador o mas grande*/
-  border: 1.5px solid var(--rosa-fuerte-original); /* Mantengo el borde */
-  border-radius: 2rem;
-  background-color: var(
-    --rosita-muy-claro
-  ); /* color de la arte de adentrodel buscador Nuevo color */
-  color: #333; /* Color de texto oscuro para contraste */
-  width: 18rem;
-  font-size: 1rem;
-  transition: border 0.2s, box-shadow 0.2s; /*no se para que sirve*/
-  box-shadow: 0 1px 4px rgba(225, 149, 171, 0.06); /* Mantengo el sombreado */
-  margin-right: 550px; /*14/10/25-pau*/
+.search-bar input{
+    width:100%;
+    padding:15px 20px 15px 50px;
+    border:none;
+    background:#fff4f8;
+    border-radius:50px;
+    font-size:15px;
 }
 
-.search-bar:focus {
-  /*cuando tocamos el elemento*/
-  outline: none;
-
-  background: var(--gris-muy-claro); /* Nuevo color al enfocar */
-  box-shadow: 0 0 0 2px rgba(225, 149, 171, 0.2); /* Sombreado al enfocar */
+.search-bar i{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#ff6f91;
 }
 
-.icons {
-  display: flex; /* Flexbox para los iconos. elemento en linea */
-  align-items: center; /* Centrado vertical */
-  gap: 0.5rem; /* Espacio entre los iconos */
+.header-icons{
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
-.icon {
-  height: 5rem; /* Tamaño fijo del icono */
-  width: 5rem;
-  object-fit: contain; /* Ajusta el contenido dentro del contenedor sin recorte */
-  /* cursor: pointer; El cursor cambia a "mano" indicando que se puede hacer clic */
-}
-/* MENÚ INFERIOR */
-/* --- MENÚ INFERIOR --- */
-.menu {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  background-color: var(
-    --rosa-un-poco-mas-claro
-  ); /* ¡Mismo color que arriba! */
-  padding: 10px 0;
-  /* border-top: 1px solid transparent; o podés eliminarlo si molesta */
-  /* border-bottom: 1px solid transparent; */
+.icon-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:#444;
+    font-weight:500;
+    transition:.3s;
 }
 
-.menu a {
-  text-decoration: none;
-  color: var(--gris-oscuro-texto);
-  font-weight: bold; /*negrita*/
-  font-size: 1rem; /*tamano de la fuente */
-  padding: 5px 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.icon-btn:hover{
+    color:#ff6f91;
 }
 
-.menu a:hover {
-  color: #fff;
+.icon-btn i{
+    font-size:22px;
 }
 
-/* --- AJUSTE PARA ANCLAS QUE QUEDAN TAPADAS POR LA BARRA --- */
-/* [id] {
-  scroll-margin-top: 150px; /* Deja espacio arriba para que no quede tapado} */
-*/
-
-/* ÍCONO CUENTA */
-.iconcu {
-  margin-left: 2rem; /* Separación izquierda */
+.menu-categorias{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:15px;
+    border-top:1px solid #eee;
 }
 
-.iconcu i {
-  font-size: 2rem; /* Tamaño del icono */
-  color: #f8e8ee; /* Color por defecto, rosado muy claro */
-  transition: color 0.3s ease, transform 0.3s ease; /* Animación suave */
+.menu-categorias a{
+    text-decoration:none;
+    color:#444;
+    font-weight:600;
+    transition:.3s;
 }
 
-.iconcu a:hover i {
-  color: #e195ab; /* Color rosado al pasar el mouse */
-  transform: scale(1.2); /* Aumenta ligeramente el tamaño */
+.menu-categorias a:hover{
+    color:#ff6f91;
 }
-
-/* ÍCONO CARRITO */
-.iconcar {
-  margin-left: 2rem;
-}
-
-.iconcar i {
-  font-size: 2rem;
-  color: #f8e8ee;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.iconcar a:hover i {
-  color: #e195ab;
-  transform: scale(1.2);
-}
-
-/* ÍCONO COMENTARIOS */
-.iconcom {
-  margin-left: 2rem;
-}
-
-.iconcom i {
-  font-size: 2rem;
-  color: #f8e8ee;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.iconcom a:hover i {
-  color: #e195ab;
-  transform: scale(1.2);
-}
-
-/* ÍCONO CORAZÓN / FAVORITOS */
-.iconcora {
-  margin-left: 2rem;
-}
-
-.iconcora i {
-  font-size: 30px; /* Tamaño específico del ícono */
-  color: #f8e8ee;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.iconcora a:hover i {
-  color: #e195ab;
-  transform: scale(1.2);
-}
-/* Agrupa los íconos */
-.icons {
-  display: flex;
-  gap: 20px; /* Separación entre íconos */
-}
-
-/* Posiciona los íconos para mostrar tooltips */
-.iconcu,
-.iconcar,
-.iconcom,
-.iconcora {
-  position: relative; /* Necesario para ubicar tooltips */
-}
-
-/* ESTILO DE TOOLTIP (globo informativo) */
-.tooltip {
-  visibility: hidden; /* Oculto por defecto */
-  background-color: #e195ab; /* Fondo rosado */
-  color: white;
-  text-align: center;
-  border-radius: 6px;
-  padding: 4px 8px;
-  position: absolute;
-  bottom: 125%; /* Aparece arriba del ícono */
-  left: 50%;
-  transform: translateX(-50%) translateY(5px); /* Centrado horizontal con leve desplazamiento vertical */
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  font-size: 12px;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra suave */
-  margin-top: 10px;
-}
-.contadorFavoritos {
-  color: var(--rosita-muy-claro);
-}
-.contadorFavoritos:hover {
-  color: var(--rosa-fuerte-original);
-  cursor: pointer;
-}
-
-/* Muestra el tooltip al pasar el mouse */
-.iconcu:hover .tooltip,
-.iconcar:hover .tooltip,
-.iconcom:hover .tooltip,
-.iconcora:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(2); /* Sube el tooltip */
-}
-.favoritos-popup {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 380px;
-  max-width: 95vw;
-  height: 100vh;
-  background: var(--rosita-muy-claro);
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  font-family: "Poppins", sans-serif;
-  padding: 25px 20px;
-  border-left: 3px solid var(--rosa-fuerte-original);
-}
-
-.favoritos-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-}
-
-.favoritos-header h2 {
-  font-size: 1.4rem;
-  color: var(--rosa-fuerte-original);
-  font-weight: 600;
-}
-
-.favoritos-header .fa-xmark:hover {
-  color: var(--gris-oscuro-texto);
-}
-
-/* Cuerpo con scroll */
-.favoritos-body {
-  padding: 10px 16px;
-  overflow-y: auto; /* activa scroll vertical */
-  max-height: 60vh; /* controla el área visible */
-}
-
-/* Personalización de la barra de scroll */
-.favoritos-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-.favoritos-body::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
-}
-
-.favoritos-body::-webkit-scrollbar-thumb:hover {
-  background-color: #999;
-}
-
-.favorito-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.favorito-item img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.favorito-info {
-  flex: 1;
-}
-
-.favorito-eliminar {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #e195ab;
-  font-size: 1.2rem;
-  transition: color 0.3s;
-}
-.cerrar-favorito {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #e195ab;
-  font-size: 1.5rem;
-  transition: color 0.3s;
-}
-
-/*******************************************************************/
-
 /* Responsive */
 @media (max-width: 1100px) {
   .navbar {

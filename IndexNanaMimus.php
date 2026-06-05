@@ -11,36 +11,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
   </head>
 <body>
-  <div class="navfija">
-    <div class="navbar">
-        <div class="navbar-left">
-        <a href="IndexNanaMimus.php">
-          <img src="NanaMimus/logotipo.jpg" alt="Logo" class="logo">
+ <header class="header">
+    
+    <div class="header-top">
+
+        <a href="indexNanaMimus.php" class="logo-container">
+            <img src="NanaMimus/logotipo.jpg" alt="Nana Mimus" class="logo">
         </a>
+
+        <form action="buscar.php" method="GET" class="search-bar">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                name="q"
+                placeholder="Buscar productos..."
+                autocomplete="off"
+            >
+
+        </form>
+
+        <div class="header-icons">
+
+            <a href="preguntasfrecuentes.html" class="icon-btn">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Ayuda</span>
+            </a>
+
+            <a href="#" onclick="toggleFavoritos()" class="icon-btn">
+                <i class="fa-solid fa-heart"></i>
+                <span id="contadorFavoritos">0</span>
+            </a>
+
+            <a href="#" class="icon-btn">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span id="contadorCarrito">0</span>
+            </a>
+
+            <a href="#" class="icon-btn">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
         </div>
-        <div class="iconcar">
-          <a href="#">
-            <i class="fa-solid fa-basket-shopping"></i>
-          </a>
-          <span class="contadorFavoritos" id="contadorCarrito">0</span>
-          <div class="tooltip">Mi Carrito</div>
-        </div>
-        <div class="iconcom">
-          <a href="preguntasfrecuentes.html">
-            <i class="fa-solid fa-comments"></i>
-          </a>
-          <div class="tooltip">Preguntas Frecuentes</div>
-        </div>
-        <div class="iconcora">
-          <a href=""  onclick="toggleFavoritos()"><!--abrir cerrar -->
-            <i class="fa-solid fa-heart"></i>
-          </a>
-          <span class="contadorFavoritos" id="contadorFavoritos">0</span>
-          <div class="tooltip">Mis Favoritos
-          </div>
-        </div>
+
     </div>
-  </div>
+
+    <nav class="menu-categorias">
+
+        <a href="#flores">Flores</a>
+        <a href="#bebes">Ropa de Bebé</a>
+        <a href="#accesorio">Accesorios</a>
+        <a href="#trajes">Trajes</a>
+        <a href="#disfraz">Disfraces</a>
+        <a href="sobrenosotros.html">Nosotros</a>
+
+    </nav>
+
+</header>
 
   <!-- MENÚ INFERIOR -->
   <div class="menu">
