@@ -31,7 +31,7 @@ $producto = mysqli_fetch_assoc($resultado);
             padding:20px;
         }
 
-        .imagen img{
+        .imagen1 img{
             width:450px;
             border-radius:20px;
         }
@@ -61,7 +61,7 @@ $producto = mysqli_fetch_assoc($resultado);
 <div class="contenedor">
 
     <div class="imagen">
-        <img src="<?php echo $producto['imagen']; ?>" alt="">
+        <img src="<?php echo $producto['imagen1']; ?>" alt="">
     </div>
 
     <div class="info">

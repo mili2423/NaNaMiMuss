@@ -104,6 +104,21 @@ if ($resultado && $resultado->num_rows > 0) {
             $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
         </p>
 
+    <a href="producto.php?id=<?php echo $producto['id']; ?>">
+        <img src="<?php echo $producto['imagen1']; ?>" alt="<?php echo $producto['nombre']; ?>">
+    </a>
+
+    <h3><?php echo $producto['nombre']; ?></h3>
+
+    <p class="precio">
+        $<?php echo number_format($producto['precio'], 0, ',', '.'); ?>
+    </p>
+
+    <button class="btn-carrito" data-id="<?php echo $producto['id']; ?>">
+        🛒 Agregar al carrito
+    </button>
+
+
     </div>
 
 <?php
