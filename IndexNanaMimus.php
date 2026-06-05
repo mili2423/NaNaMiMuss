@@ -86,6 +86,7 @@ include("conexion.php");
         <li><img width="1580" height="450 " src="NanaMimus/carrr7.jpg"alt=""></li>
     </ul>
 </div>
+</div>
 <div class="contenedor-productos">
 <?php
 include("conexion.php");

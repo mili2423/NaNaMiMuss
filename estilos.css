@@ -357,7 +357,7 @@ body {
     display: inline-block;
     text-decoration: none;
     color: #ff3b93; /* Rosa vibrante de tu captura */
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 500;
     padding: 10px 30px;
     border: 1px solid #ffb6d5; /* Borde sutil */
@@ -388,7 +388,7 @@ body {
 
 .navbar-icons i {
     color: #ff3b93; /* Color rosa exacto para los trazos */
-    font-size: 26px; /* Tamaño adaptado idéntico a Figma */
+    font-size: 20px; /* Tamaño adaptado idéntico a Figma */
     transition: transform 0.2s ease;
 }
 
