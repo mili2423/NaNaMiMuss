@@ -497,206 +497,130 @@ body {
     width: 2rem;
   }
 }
-/* --- Estilo general del footer --- */
-footer {
-  background-color: #fdcedf; /* Fondo rosita pastel suave */
-  padding-top: 2rem; /* Espacio grande arriba del contenido */
-  padding-bottom: 3rem; /* Espacio grande abajo del contenido */
-  border-top: 4px solid #e195ab; /* Línea rosa fuerte en la parte superior */
-  font-family: "Poppins", sans-serif; /* Fuente moderna y legible */
-  color: #333;
-  text-decoration: none; /* Quita el subrayado */
-  /* Texto gris oscuro */
+/* ==========================================
+   6. ESTILOS PARA EL FOOTER
+   ========================================== */
+.footer {
+    background-color: #fff5f6; /* Fondo rosa pastel idéntico al menú */
+    border-top: 1px solid #ffb6d5; /* Fina línea rosa divisoria en el tope */
+    padding: 40px 20px 20px 20px;
+    width: 100%;
 }
 
-/* --- Títulos de cada columna dentro del footer (Contacto, Horarios, Seguinos) --- */
-footer h4 {
-  color: #e195ab; /* Color rosa fuerte */
-  margin-bottom: 1rem; /* Separación debajo del título */
-  font-size: 30px; /* Tamaño grande para destacar */
-}
-
-/* --- Párrafos con información dentro del footer --- */
-footer p {
-  margin: 0rem 0; /* Sin margen arriba y abajo y permite los iconos */
-  font-size: 1rem; /* Tamaño estándar de texto */
-}
-
-/* --- Contenedor principal que organiza las 3 columnas del footer --- */
 .footer-content {
-  display: flex; /* Flexbox para poner columnas en fila */
-  justify-content: space-around; /* Espacio equitativo entre columnas */
-  flex-wrap: wrap; /* Permite que columnas bajen en pantallas pequeñas */
-  gap: 3rem; /* Espacio entre columnas */
-  margin-bottom: 2rem; /* Separación con el pie de copyright */
-  text-align: center; /* Centra el texto dentro de cada columna */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
-/* --- Cada sección o columna individual del footer --- */
 .footer-section {
-  flex: 1 1 250px; /* Crece y encoge con mínimo ancho de 250px */
-  min-width: 200px; /* No se hace más pequeño que 200px */
+    flex: 1;
+    min-width: 250px;
 }
 
-/* --- Pie de página final con © y texto legal --- */
+.footer-section h4 {
+    color: #ff3b93; /* Rosa vibrante de Figma para los títulos */
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.footer-section p {
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-section p i {
+    color: #ff3b93; /* Iconos internos de contacto del mismo rosa */
+    width: 18px;
+}
+
+/* --- ICONOS DE REDES SOCIALES ANIMADOS --- */
+.footer-section .wrapper {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    padding: 0;
+}
+
+.footer-section .wrapper a {
+    text-decoration: none;
+}
+
+.footer-section .wrapper .icon {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ffb6d5;
+    border-radius: 50%;
+    padding: 12px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff3b93;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.footer-section .wrapper .icon:hover {
+    background-color: #ff3b93;
+    color: #ffffff;
+    border-color: #ff3b93;
+    transform: translateY(-3px);
+}
+
+/* Tooltip Redes Sociales */
+.footer-section .wrapper .tooltip {
+    position: absolute;
+    top: -40px;
+    background: #333333;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.footer-section .wrapper .icon:hover .tooltip {
+    opacity: 1;
+    top: -45px;
+}
+
+/* --- BARRA INFERIOR DE CRÉDITOS --- */
 .footer-bottom {
-  text-align: center; /* Centra el texto */
-  font-size: 10px; /* Texto pequeño */
-  border-top: 1px solid #ffc2d6; /* Línea suave separadora arriba */
-  padding-top: 1.2rem; /* Espacio arriba del texto */
-  color: #666; /* Gris claro */
+    margin-top: 40px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 20px;
+    text-align: center;
+    width: 100%;
 }
 
-/* --- Lista horizontal de íconos de redes sociales --- */
-.footer-section ul {
-  display: flex; /* Pone íconos en fila */
-  justify-content: center; /* Centra los íconos */
-  gap: 1.2rem; /* Espacio entre cada ícono */
-  padding: 0; /* Sin padding */
-  list-style: none; /* Sin viñetas */
-  margin-top: 1rem; /* Separación arriba de la lista */
+.footer-bottom p {
+    color: #777777;
+    font-size: 13px;
+    margin-bottom: 5px;
 }
 
-/* --- Estilo para cada ícono redondo dentro de la lista --- */
-.footer-section ul li a {
-  background-color: #ffb3cc; /* Fondo rosita suave */
-  color: white; /* Ícono blanco */
-  width: 45px; /* Ancho fijo para círculo */
-  height: 45px; /* Alto fijo para círculo */
-  border-radius: 50%; /* Hace el fondo redondo */
-  display: flex; /* Flexbox para centrar ícono */
-  justify-content: center; /* Centrado horizontal */
-  align-items: center; /* Centrado vertical */
-  font-size: 1.2rem; /* Tamaño del ícono */
-  transition: all 0.3s ease; /* Transición suave para hover */
+.footer-bottom .creditos {
+    font-size: 12px;
+    color: #999999;
 }
-
-/* --- Efecto hover en íconos de redes sociales --- */
-.footer-section ul li a:hover {
-  background-color: #e195ab; /* Cambia fondo a rosa fuerte */
-  transform: scale(1.1); /* Se agranda un poco */
-}
-
-/* --- Responsive: para pantallas menores a 768px --- */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column; /* Columnas apiladas verticalmente */
-    align-items: center; /* Centra todo */
-  }
-
-  .footer-section ul {
-    justify-content: center; /* Centra los íconos */
-  }
-}
-
-/* --- Texto general del footer (dirección, horarios, etc.) ajustado --- */
-footer p {
-  margin: 0.5rem 0; /* Margen arriba y abajo */
-  font-size: 15px; /* Texto un poco más grande que antes */
-  font-weight: 500; /* Más presencia al texto */
-}
-
-/* --- Títulos como "Contacto", "Horarios", "Seguinos" ajustados --- */
-footer h4 {
-  color: #e195ab;
-  margin-bottom: 1rem;
-  font-size: 15px; /* Tamaño reducido para más armonía */
-  font-weight: 600;
-}
-
-/* --- Pie de copyright ajustado --- */
-.footer-bottom {
-  font-size: 15px; /* Texto más legible */
-  color: #666;
-}
-
-/* --- Contenedor de íconos, parece un wrapper personalizado --- */
-wrapper {
-  display: inline-flex; /* Pone íconos en fila */
-  list-style: none; /* Sin viñetas */
-  height: 120px; /* Alto fijo */
-  width: 100%; /* Ancho total del contenedor */
-  padding-top: 40px; /* Espacio arriba */
-  font-family: "Poppins", sans-serif; /* Misma fuente moderna */
-  justify-content: center; /* Centra horizontalmente */
-}
-
-/* --- Estilo individual para cada ícono dentro del wrapper --- */
-.wrapper .icon {
-  position: relative; /* Para posicionar tooltip */
-  background: #fff; /* Fondo blanco */
-  border-radius: 50%; /* Circular */
-  margin: 10px; /* Separación entre íconos */
-  width: 50px; /* Tamaño fijo */
-  height: 50px;
-  font-size: 18px;
-  display: flex; /* Flexbox para centrar contenido */
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  /* cursor: pointer; Cursor puntero para indicar clickeable */
-  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Animación */
-}
-
-/* --- Tooltip oculto por defecto --- */
-.wrapper .tooltip {
-  position: absolute; /* Posicionado respecto al icono */
-  top: 0;
-  font-size: 14px;
-  background: #fff; /* Fondo blanco */
-  color: #fff; /* Texto blanco (quizás un error, queda invisible?) */
-  padding: 5px 8px;
-  border-radius: 5px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  opacity: 0; /* Oculto */
-  pointer-events: none; /* No interactúa */
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* --- Triángulo pequeño debajo del tooltip --- */
-.wrapper .tooltip::before {
-  position: absolute;
-  content: "";
-  height: 8px;
-  width: 8px;
-  background: #fff;
-  bottom: -3px;
-  left: 50%;
-  transform: translate(-50%) rotate(45deg);
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* --- Mostrar tooltip al hacer hover en el ícono --- */
-.wrapper .icon:hover .tooltip {
-  top: -45px; /* Se mueve hacia arriba */
-  opacity: 1; /* Visible */
-  visibility: visible;
-  pointer-events: auto; /* Interactuable */
-}
-
-/* --- Efecto sombra al pasar el mouse --- */
-.wrapper .icon:hover span,
-.wrapper .icon:hover .tooltip {
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-}
-
-/* --- Cambios de color en tooltip e icono al hacer hover en Facebook --- */
-.wrapper .facebook:hover,
-.wrapper .facebook:hover .tooltip,
-.wrapper .facebook:hover .tooltip::before {
-  background: #e195ab;
-  color: #fff;
-}
-
-/* --- Cambios de color en tooltip e icono al hacer hover en Instagram --- */
-.wrapper .instagram:hover,
-.wrapper .instagram:hover .tooltip,
-.wrapper .instagram:hover .tooltip::before {
-  background: #e195ab;
-  color: #fff;
-}
-
 /* Estilos generales del carrito (popup) */
 /* Modal general */
 .cart-sidebar {
