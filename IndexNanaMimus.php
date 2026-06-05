@@ -173,9 +173,9 @@ if ($resultado && $resultado->num_rows > 0) {
         <i class="fa-regular fa-envelope"></i>
         <h4>Contacto</h4>
       </div>
-      <p><i class="fa-solid fa-envelope"></i> hola@nanamimus.com</p>
-      <p><i class="fa-solid fa-phone"></i> +52 123 456 7890</p>
-      <p><i class="fa-solid fa-location-dot"></i> Ciudad de México, México</p>
+      <p><i class="fa-solid fa-envelope"></i> NanaMimus@gmail.com</p>
+      <p><i class="fa-solid fa-phone"></i> +54 0 3548-546978</p>
+      <p><i class="fa-solid fa-location-dot"></i> La Falda, Córdoba, Argentina</p>
     </div>
 
     <!-- Columna 3: Horarios -->
@@ -190,7 +190,7 @@ if ($resultado && $resultado->num_rows > 0) {
         <span class="day">Domingo</span> <span class="time closing">Cerrado</span>
       </div>
       <div class="info-badge highlight-badge">
-        <p>🚀 Envío gratis en compras mayores a $50</p>
+        <p>🚀 Envío gratis en compras mayores a $50000</p>
       </div>
     </div>
 
@@ -202,8 +202,8 @@ if ($resultado && $resultado->num_rows > 0) {
       </div>
       <div class="payment-cards">
         <span class="card-brand">VISA</span>
-        <span class="card-brand">MC</span>
-        <span class="card-brand">AMEX</span>
+        <span class="card-brand">Mastercard</span>
+        <span class="card-brand">PayPal</span>
       </div>
       <div class="info-badge secure-badge">
         <h5>Pago seguro</h5>
