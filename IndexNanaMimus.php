@@ -89,6 +89,7 @@ if ($resultado && $resultado->num_rows > 0) {
             <img
                 src="<?php echo htmlspecialchars($producto['imagen']); ?>"
                 alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
+                
             >
 
         </a>
@@ -116,7 +117,7 @@ if ($resultado && $resultado->num_rows > 0) {
 
 }
 ?>
-
+<p><?php echo $producto['imagen']; ?></p>
 </section>
 
 </section>
