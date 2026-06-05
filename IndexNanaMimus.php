@@ -85,7 +85,7 @@ if ($resultado && $resultado->num_rows > 0) {
     <div class="producto-card">
 
         <a href="producto.php?id=<?php echo $producto['id']; ?>">
-
+<?php var_dump($producto['imagen']); ?>
             <img
                 src="<?php echo $producto['imagen']; ?>"
                 alt="<?php echo $producto['nombre']; ?>"
