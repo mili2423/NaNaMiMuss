@@ -71,7 +71,7 @@
 include("conexion.php");
 
 $sql = "SELECT * FROM productos";
-$resultado = mysqli_query($conn, $sql);
+$resultado = mysqli_query($conexion, $sql);
 ?>
 
 <section class="productos-container">
