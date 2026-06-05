@@ -498,23 +498,23 @@ body {
   }
 }
 /* ==========================================
-   6. ESTILOS PARA EL FOOTER
+   6. FOOTER ESTILO FIGMA EXACTO
    ========================================== */
 .footer {
-    background-color: #fff5f6; /* Fondo rosa pastel idéntico al menú */
-    border-top: 1px solid #ffb6d5; /* Fina línea rosa divisoria en el tope */
-    padding: 40px 20px 20px 20px;
+    background-color: #fff0f3; /* Fondo rosa pálido aesthetic */
+    padding: 60px 40px 30px 40px;
     width: 100%;
+    border-top: 1px solid #ffe3e8;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
 }
 
 .footer-section {
@@ -522,104 +522,205 @@ body {
     min-width: 250px;
 }
 
-.footer-section h4 {
-    color: #ff3b93; /* Rosa vibrante de Figma para los títulos */
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.footer-section p {
-    color: #555555;
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 8px;
+/* Encabezados de Sección */
+.brand-title, .section-title {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
-.footer-section p i {
-    color: #ff3b93; /* Iconos internos de contacto del mismo rosa */
-    width: 18px;
+.brand-logo-icon {
+    font-size: 22px;
 }
 
-/* --- ICONOS DE REDES SOCIALES ANIMADOS --- */
-.footer-section .wrapper {
-    display: flex;
-    list-style: none;
-    gap: 15px;
-    padding: 0;
-}
-
-.footer-section .wrapper a {
-    text-decoration: none;
-}
-
-.footer-section .wrapper .icon {
-    position: relative;
-    background: #ffffff;
-    border: 1px solid #ffb6d5;
-    border-radius: 50%;
-    padding: 12px;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.brand-title h4 {
     color: #ff3b93;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
+    font-size: 24px;
+    font-weight: 700;
 }
 
-.footer-section .wrapper .icon:hover {
+.section-title i {
+    color: #ff3b93;
+    font-size: 18px;
+}
+
+.section-title h4 {
+    color: #0b1a30; /* Tono oscuro contrastante de tu Figma para títulos secundarios */
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Detalles de la Marca */
+.brand-desc {
+    color: #556275;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-circle {
+    width: 40px;
+    height: 40px;
     background-color: #ff3b93;
     color: #ffffff;
-    border-color: #ff3b93;
-    transform: translateY(-3px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* Tooltip Redes Sociales */
-.footer-section .wrapper .tooltip {
-    position: absolute;
-    top: -40px;
-    background: #333333;
-    color: #ffffff;
+.social-circle:hover {
+    transform: scale(1.05);
+    background-color: #e0287b;
+}
+
+/* Sección Contacto */
+.contacto p {
+    color: #556275;
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contacto p i {
+    color: #556275;
+    width: 16px;
+}
+
+/* Sección Horarios Grid */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 10px;
+    column-gap: 20px;
+    font-size: 14px;
+    color: #556275;
+    margin-bottom: 20px;
+}
+
+.schedule-grid .time {
+    font-weight: 500;
+    color: #0b1a30;
+}
+
+.schedule-grid .closing {
+    color: #ff3b93;
+    font-weight: 600;
+}
+
+/* Cajas/Insignias contenedoras (Envío Gratis y Pago Seguro) */
+.info-badge {
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.highlight-badge {
+    background-color: #fff5f7;
+    border: 1px solid #ffd1dc;
+    color: #ff3b93;
+    font-weight: 500;
+}
+
+.secure-badge {
+    background-color: #fff5f7;
+    border: 1px solid #ffe3e8;
+}
+
+.secure-badge h5 {
+    color: #ff3b93;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.secure-badge p {
+    color: #556275;
+}
+
+/* Métodos de Pago Tarjetas */
+.payment-cards {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.card-brand {
+    background-color: #ffffff;
+    border: 1px solid #ffe3e8;
+    border-radius: 8px;
+    padding: 8px 16px;
     font-size: 12px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.footer-section .wrapper .icon:hover .tooltip {
-    opacity: 1;
-    top: -45px;
-}
-
-/* --- BARRA INFERIOR DE CRÉDITOS --- */
-.footer-bottom {
-    margin-top: 40px;
-    border-top: 1px solid #f0f0f0;
-    padding-top: 20px;
+    font-weight: 700;
+    color: #ff3b93;
+    letter-spacing: 0.5px;
+    flex: 1;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* --- BARRA INFERIOR FINAL --- */
+.footer-bottom {
+    margin-top: 50px;
+    border-top: 1px solid #f2d6dc;
+    padding-top: 25px;
     width: 100%;
 }
 
-.footer-bottom p {
-    color: #777777;
-    font-size: 13px;
-    margin-bottom: 5px;
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.footer-bottom .creditos {
-    font-size: 12px;
-    color: #999999;
+.copyright {
+    color: #556275;
+    font-size: 14px;
+}
+
+.bottom-links {
+    display: flex;
+    gap: 30px;
+}
+
+.bottom-links a {
+    text-decoration: none;
+    color: #0b1a30;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.bottom-links a:hover {
+    color: #ff3b93;
+}
+
+/* Responsive para pantallas chicas */
+@media (max-width: 768px) {
+    .bottom-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .bottom-links {
+        flex-direction: column;
+        gap: 12px;
+    }
 }
 /* Estilos generales del carrito (popup) */
 /* Modal general */
