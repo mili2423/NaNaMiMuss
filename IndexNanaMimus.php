@@ -66,15 +66,52 @@
         <li><img width="1580" height="450 " src="NanaMimus/carrr7.jpg"alt=""></li>
     </ul>
 </div>
-<div class="contenedor-productos"></div>
+<div class="contenedor-productos">
+  <?php
+include("conexion.php");
+
+$sql = "SELECT * FROM productos";
+$resultado = mysqli_query($conn, $sql);
+?>
+
+<section class="productos-container">
+
+<?php while($producto = mysqli_fetch_assoc($resultado)) { ?>
+
+    <div class="producto-card">
+
+        <a href="producto.php?id=<?php echo $producto['id']; ?>">
+            <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
+        </a>
+
+        <?php if($producto['descuento'] > 0){ ?>
+            <span class="badge-descuento">
+                -<?php echo $producto['descuento']; ?>%
+            </span>
+        <?php } ?>
+
+        <h3><?php echo $producto['nombre']; ?></h3>
+
+        <p class="precio">
+            $<?php echo number_format($producto['precio'],0,',','.'); ?>
+        </p>
+
+        <button class="btn-carrito">
+            Agregar al carrito
+        </button>
+
+    </div>
+
+<?php } ?>
+
+</section>
+</div>
 <!-- Scripts -->
 <script src="productos.js"></script>
 <script src="index.js"></script>
 <script src="favoritos.js"></script>
 <script src="carrito.js"></script>
 <script src="resultados.html"></script>
-
-    <br>   <br>   <br>  <br>
     
 </body>                
 
