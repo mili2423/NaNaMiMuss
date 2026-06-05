@@ -69,18 +69,6 @@
     </nav>
 
 </header>
-
-  <!-- MENÚ INFERIOR -->
-  <div class="menu">
-    <ul id="box_search">
-    <a href="#flores">Flores</a><!--el # nos permite que no nos lleve a otra pagina -->
-    <a href="#bebes">Ropa de bebé</a>
-      <a href="#accesorio">Accesorios </a>
-    <a href="#trajes">Trajes</a>
-    <a href="#disfraz">Disfraces</a>
-    <a href="sobrenosotros.html">Nosotros</a>
-    </ul>
-  </div>
   </div>
 
   <div class="carousel">
