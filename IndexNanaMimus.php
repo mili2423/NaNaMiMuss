@@ -105,7 +105,10 @@ $items_iniciales = $fila_cont['total'] ?? 0;
                         <h4 style="margin: 10px 0 5px 0; font-size: 0.95rem; color: #333;"><?php echo $producto['nombre']; ?></h4>
                         <p style="color: #ff409f; font-weight: bold; margin: 0 0 12px 0;">$<?php echo number_format($producto['precio'], 2); ?></p>
                         
-                        <button onclick="ejecutarCarrito('agregar', <?php echo $producto['id']; ?>)" style="background:#ff409f; color:white; padding:8px 16px; border-radius:20px; border:none; cursor:pointer; font-size:13px; font-weight: 500; display: inline-block;">+ Agregar</button>
+                      <button onclick="ejecutarCarrito('agregar', <?php echo $producto['id']; ?>)" 
+        style="background: #ff409f; color: white; width: 100%; padding: 12px 0; border-radius: 12px; border: none; cursor: pointer; font-size: 0.9rem; font-family: 'Poppins', sans-serif; font-weight: 600; transition: background 0.2s;">
+    Agregar al carrito
+</button>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
@@ -135,9 +138,6 @@ $items_iniciales = $fila_cont['total'] ?? 0;
 </div>
 
   <script src="productos.js"></script>
-  <script src="index.js"></script>
-  <script src="favoritos.js"></script>
-  
   <script src="carrito.js"></script>
 </body>                 
 

@@ -4,30 +4,35 @@ include("conexion.php");
 // Configurar para que devuelva respuestas JSON legibles por JS
 header('Content-Type: application/json');
 
-$usuario_id = 1; // ID de usuario de prueba
+$usuario_id = 1; // Tu ID de usuario por defecto
 
-// Capturar datos tanto si vienen por URL (GET) como si vienen por JSON (POST)
+// CAPTURA BLINDADA: Leemos de todas las formas posibles (POST JSON, POST NORMAL O GET)
 $data = json_decode(file_get_contents('php://input'), true);
-$accion = $_GET['accion'] ?? $data['accion'] ?? '';
-$producto_id = intval($_GET['id'] ?? $data['id'] ?? 0);
+
+$accion = $_GET['accion'] ?? $data['accion'] ?? $_POST['accion'] ?? '';
+$producto_id = intval($_GET['id'] ?? $data['id'] ?? $_POST['id'] ?? 0);
 
 if (empty($accion)) {
-    echo json_encode(['success' => false, 'error' => 'No se especificó ninguna acción.']);
+    echo json_encode(['success' => false, 'error' => 'No se especificó ninguna acción en el backend.']);
     exit();
 }
 
-// --- PROCESAR ACCIONES ---
+// --- PROCESAR ACCIONES DIRECTAS EN BASE DE DATOS ---
 if ($accion == 'agregar' && $producto_id > 0) {
+    // 1. Verificamos si ya existe el producto para ese usuario
     $chequear = $conexion->query("SELECT id, cantidad FROM carrito WHERE usuario_id = $usuario_id AND producto_id = $producto_id");
+    
     if ($chequear && $chequear->num_rows > 0) {
         $fila = $chequear->fetch_assoc();
         $nueva_cantidad = $fila['cantidad'] + 1;
         $conexion->query("UPDATE carrito SET cantidad = $nueva_cantidad WHERE id = " . $fila['id']);
     } else {
+        // 2. Si es nuevo, lo insertamos
         $conexion->query("INSERT INTO carrito (usuario_id, producto_id, cantidad) VALUES ($usuario_id, $producto_id, 1)");
     }
 }
 
+// ... (Los bloques de restar, eliminar y vaciar se quedan igual de impecables)
 if ($accion == 'restar' && $producto_id > 0) {
     $chequear = $conexion->query("SELECT id, cantidad FROM carrito WHERE usuario_id = $usuario_id AND producto_id = $producto_id");
     if ($chequear && $chequear->num_rows > 0) {
@@ -40,17 +45,14 @@ if ($accion == 'restar' && $producto_id > 0) {
         }
     }
 }
-
 if ($accion == 'eliminar' && $producto_id > 0) {
     $conexion->query("DELETE FROM carrito WHERE usuario_id = $usuario_id AND producto_id = $producto_id");
 }
-
 if ($accion == 'vaciar') {
     $conexion->query("DELETE FROM carrito WHERE usuario_id = $usuario_id");
 }
 
-// --- RESPUESTA EN TIEMPO REAL ---
-// Después de cualquier operación, calculamos el estado actual del carrito y lo devolvemos
+// --- LEER EL CARRITO ACTUALIZADO DESDE LA BD ---
 $query_carrito = "SELECT c.id AS carrito_id, p.id AS producto_id, p.nombre, p.precio, p.imagen1, c.cantidad 
                   FROM carrito c 
                   INNER JOIN productos p ON c.producto_id = p.id 
@@ -66,7 +68,7 @@ if ($resultado_carrito && $resultado_carrito->num_rows > 0) {
     while ($fila = $resultado_carrito->fetch_assoc()) {
         $subtotal += $fila['precio'] * $fila['cantidad'];
         $items_totales += $fila['cantidad'];
-        // Formateamos la fila para enviarla a JS
+        
         $items[] = [
             'carrito_id' => $fila['carrito_id'],
             'producto_id' => $fila['producto_id'],
@@ -83,7 +85,6 @@ $costo_envio = ($subtotal > 0 && $subtotal < 50000) ? 5.99 : 0;
 $total = $subtotal + $costo_envio;
 $falta_para_envio_gratis = max(0, 50000 - $subtotal);
 
-// Retornamos todo el objeto estructurado a JavaScript
 echo json_encode([
     'success' => true,
     'items' => $items,
@@ -94,31 +95,4 @@ echo json_encode([
     'falta_para_envio_gratis' => $falta_para_envio_gratis
 ]);
 exit();
-// Insertamos la estructura en el contenedor del pop-up flotante
-            wrapper.innerHTML = `
-                <div class="carrito-contenido">
-                    <div class="lista-productos">
-                        ${tablaProductosHTML}
-                    </div>
-
-                    <div class="carrito-resumen">
-                        <div class="resumen-fila">
-                            <span>Envío</span>
-                            <span>${stringEnvio}</span>
-                        </div>
-                        
-                        <p class="alerta-envio">${stringAlertaEnvio}</p>
-                        
-                        <div class="resumen-fila total-fila">
-                            <strong>Total</strong>
-                            <strong>$${data.total.toFixed(2)}</strong>
-                        </div>
-
-                        <button class="btn-finalizar" onclick="alert('¡Compra Procesada con éxito!')">Finalizar Compra ✨</button>
-                        <div style="text-align: center; margin-top: 10px;">
-                            <button class="btn-vaciar" style="background:none; border:none; cursor:pointer;" onclick="ejecutarCarrito('vaciar')">Vaciar carrito</button>
-                        </div>
-                    </div>
-                </div>
-            `;
 ?>
