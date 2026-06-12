@@ -1,19 +1,20 @@
 <?php
 include("conexion.php");
 
-// Simulamos el usuario logueado con ID 1
+// Simulamos el usuario logueado con ID 1 para las pruebas
 $usuario_id = 1; 
 
-// 1. OBTENER LOS PRODUCTOS DE LA TIENDA (Tu código original)
+// 1. Obtener tus productos de la DB (Tu código original)
 $sql = "SELECT * FROM productos";
 $resultado = $conexion->query($sql);
 
-// 2. OBTENER LOS ELEMENTOS DEL "CARRITO" DESDE TU TABLA pedidos y detalle_pedido
+// 2. Obtener los elementos del pedido actual para el Sidebar
+// Asumimos que un pedido actúa como carrito mientras su estado sea 'Pendiente'
 $carrito_items = [];
 $subtotal = 0;
 $items_totales = 0;
 
-// Buscamos el pedido actual que esté en estado 'Pendiente' para este usuario
+// Buscamos si este usuario ya tiene un pedido "Pendiente" (abierto)
 $query_pedido_activo = "SELECT id FROM pedidos WHERE usuario_id = $usuario_id AND estado = 'Pendiente' LIMIT 1";
 $res_pedido = $conexion->query($query_pedido_activo);
 
@@ -21,7 +22,7 @@ if ($res_pedido && $res_pedido->num_rows > 0) {
     $pedido = $res_pedido->fetch_assoc();
     $pedido_id = $pedido['id'];
 
-    // Si hay un pedido pendiente, traemos sus productos desde detalle_pedido
+    // Si tiene un pedido activo, traemos sus productos desde la tabla detalle_pedido
     $query_detalles = "SELECT dp.cantidad, p.id, p.nombre, p.precio, p.imagen 
                        FROM detalle_pedido dp 
                        JOIN productos p ON dp.producto_id = p.id 
