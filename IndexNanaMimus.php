@@ -1,5 +1,38 @@
-<?php 
-include("conexion.php"); 
+<?php
+include("conexion.php");
+
+// Simulamos el usuario logueado con ID 1 para las pruebas del carrito
+$usuario_id = 1; 
+
+// 1. CODIGO QUE YA TENÍAS: Obtener tus productos de la DB
+$sql = "SELECT * FROM productos";
+$resultado = $conexion->query($sql);
+
+// 2. CÓDIGO NUEVO: Obtener los elementos del carrito para el Sidebar
+$query_carrito = "SELECT c.cantidad, p.id, p.nombre, p.precio, p.imagen 
+                  FROM carrito c 
+                  JOIN productos p ON c.producto_id = p.id 
+                  WHERE c.usuario_id = $usuario_id";
+$resultado_carrito = $conexion->query($query_carrito);
+
+$carrito_items = [];
+$subtotal = 0;
+$items_totales = 0;
+
+if ($resultado_carrito && $resultado_carrito->num_rows > 0) {
+    while ($fila = $resultado_carrito->fetch_assoc()) {
+        $carrito_items[] = $fila;
+        $subtotal += $fila['precio'] * $fila['cantidad'];
+        $items_totales += $fila['cantidad'];
+    }
+}
+
+// Configuración de envío basada en tu diseño de Figma
+$costo_envio = 5.99;
+$meta_envio_gratis = 50.00;
+$envio_gratis = $subtotal >= $meta_envio_gratis;
+$total = $envio_gratis ? $subtotal : ($subtotal + $costo_envio);
+$cuanto_falta = $meta_envio_gratis - $subtotal;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -136,19 +169,66 @@ if ($resultado && $resultado->num_rows > 0) {
     echo "<p>No hay productos cargados.</p>";
 }
 ?>
+<div class="carrito-sidebar">
+        <div class="carrito-header">
+            <span class="carrito-titulo">🛍️ Mi Carrito</span>
+            <span class="contador-badge"><?php echo $items_totales; ?> item<?php echo $items_totales != 1 ? 's':''; ?></span>
+        </div>
 
+        <div class="carrito-cuerpo">
+            <?php if (empty($carrito_items)): ?>
+                <div class="carrito-vacio">
+                    <div class="icono-vacio">🌸</div>
+                    <p>Tu carrito está vacío</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($carrito_items as $item): ?>
+                    <div class="carrito-item">
+                        <img src="<?php echo $item['imagen']; ?>" alt="Miniatura">
+                        <div class="item-detalles">
+                            <div class="item-nombre"><?php echo $item['nombre']; ?></div>
+                            <div class="item-precio">$<?php echo number_format($item['precio'], 0, ',', '.'); ?></div>
+                            <div class="item-controles">
+                                <a href="carrito_accion.php?accion=restar&id=<?php echo $item['id']; ?>" class="btn-control">-</a>
+                                <span><?php echo $item['cantidad']; ?></span>
+                                <a href="carrito_accion.php?accion=agregar&id=<?php echo $item['id']; ?>" class="btn-control">+</a>
+                            </div>
+                        </div>
+                        <a href="carrito_accion.php?accion=eliminar&id=<?php echo $item['id']; ?>" class="btn-eliminar">🗑️</a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
+        <?php if (!empty($carrito_items)): ?>
+            <div class="carrito-footer">
+                <div class="linea-total">
+                    <span>Envío:</span>
+                    <span><?php echo $envio_gratis ? 'Gratis' : '$' . number_format($costo_envio, 2); ?></span>
+                </div>
+                
+                <?php if (!$envio_gratis): ?>
+                    <div class="alerta-envio">
+                        Agrega $<?php echo number_format($cuanto_falta, 2); ?> más para envío gratis ✨
+                    </div>
+                <?php endif; ?>
+
+                <div class="linea-total" style="margin-top: 15px;">
+                    <span style="font-weight: bold; font-size: 18px;">Total:</span>
+                    <span class="monto-total">$<?php echo number_format($total, 0, ',', '.'); ?></span>
+                </div>
+
+                <button class="btn-finalizar">Finalizar Compra ✨</button>
+                <a href="carrito_accion.php?accion=vaciar" class="vaciar-enlace">Vaciar carrito</a>
+            </div>
+        <?php endif; ?>
+    </div>
 </section>
 </section>
-
 </section>
 </div>
 <!-- Scripts -->
-<script src="productos.js"></script>
-<script src="index.js"></script>
-<script src="favoritos.js"></script>
-<script src="carrito.js"></script>
-<script src="resultados.html"></script>
-    
+<script src="productos.js"></script> 
 </body>                
 <footer class="footer">
   <div class="footer-content">
