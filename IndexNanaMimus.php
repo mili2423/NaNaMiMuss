@@ -63,7 +63,6 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="mas_prod.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
 </head>
 <body>
@@ -167,7 +166,7 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
           </section>
       </div>
 <script src="productos.js"></script>
-      <div class="carrito-sidebar">
+   <!--   <div class="carrito-sidebar">
           <div class="carrito-header">
               <span class="carrito-titulo"><i class="fa-solid fa-cart-shopping" style="color: #d4428a;"></i> Mi Carrito</span>
               <span class="contador-badge"><?php echo $items_totales; ?> item<?php echo $items_totales != 1 ? 's':''; ?></span>
@@ -222,7 +221,7 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
               </div>
           <?php endif; ?>
       </div>
-
+                  -->
   </div> <footer class="footer">
     <div class="footer-content">
       <div class="footer-section brand-info">
