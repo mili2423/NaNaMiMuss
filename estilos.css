@@ -884,109 +884,64 @@ body {
     margin-bottom: 30px;
     color: #333;
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* --- CUADRÍCULA DE TARJETAS (GRID) --- */
 .contenedor-productos {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 Columnas perfectas */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 25px;
+    padding: 30px;
+    font-family: 'Poppins', sans-serif; /* Aplica la fuente limpia de Figma */
 }
 
-/* --- TARJETA INDIVIDUAL --- */
 .producto-card {
-    background: #fff;
-    border-radius: 20px;
+    background: white;
+    border-radius: 24px; /* Bordes un toque más redondeados como tu captura */
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,.08);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,.06); /* Sombra más suave y moderna */
     display: flex;
     flex-direction: column;
 }
 
-.producto-card:hover {
-    transform: translateY(-5px);
-}
-
-/* --- CONTENEDOR DE IMAGEN Y BADGE --- */
-.producto-img-container {
-    position: relative;
+.producto-card img {
     width: 100%;
-    height: 280px;
-    background-color: #f9f9f9;
-}
-
-.producto-img-container img {
-    width: 100%;
-    height: 100%;
+    height: 300px;
     object-fit: cover;
     display: block;
 }
 
-.badge-descuento {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #ff3ea5;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    z-index: 5;
-}
-
-/* --- INFORMACIÓN DEL PRODUCTO --- */
 .producto-info {
-    padding: 18px;
+    padding: 20px; /* Un poco más de aire adentro */
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
 .producto-info h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: #222;
-    margin: 0 0 10px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    height: 2.4em; /* Mantiene alineadas las tarjetas si el título es largo */
-}
-
-.rating {
-    font-size: .9rem;
-    color: #333;
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-
-.rating .resenas {
-    color: #999;
-    font-weight: 400;
-    font-size: 0.85rem;
+    color: #2b2b2b;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
 }
 
 .precio {
+    color: #f04c9b;
     font-size: 1.6rem;
     font-weight: 700;
-    color: #ff3ea5;
     margin: 0 0 15px 0;
 }
 
-/* --- BOTÓN DE COMPRA --- */
 .btn-carrito {
-    display: block;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     border: none;
-    border-radius: 14px;
-    background: #ff3ea5;
-    color: white;
     padding: 14px;
-    font-size: 1rem;
+    border-radius: 12px; /* Botón tipo cápsula redondeada */
+    background: #f04c9b;
+    color: white;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
@@ -995,24 +950,7 @@ body {
 }
 
 .btn-carrito:hover {
-    background: #e72c91;
-}
-
-/* --- MENSAJE DE ERROR O VACÍO --- */
-.sin-productos {
-    grid-column: 1 / -1;
-    text-align: center;
-    font-family: sans-serif;
-    color: #666;
-    padding: 40px;
-}
-
-/* --- RESPONSIVE (Celulares) --- */
-@media (max-width: 1024px) {
-    .contenedor-productos { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-    .contenedor-productos { grid-template-columns: 1fr; }
+    background: #d63b84;
 }
 /* CARRUSEL DE IMÁGENES */
 .carousel {
