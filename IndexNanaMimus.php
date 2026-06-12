@@ -133,39 +133,13 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
 
   <div class="main-layout-container" style="display: flex; width: 100%;">
       
-      <div class="contenedor-productos" style="width: 73%; box-sizing: border-box;">
-          <h2 style="font-family: 'Poppins', sans-serif; text-align: center; margin-top: 20px; color: #333;">✨ Productos Destacados ✨</h2>
-          <section class="productos-container">
-          <?php
-          if ($resultado && $resultado->num_rows > 0) {
-              while($producto = $resultado->fetch_assoc()) {
-          ?>
-              <div class="producto-card">
-                  <a href="producto.php?id=<?php echo $producto['id']; ?>">
-                      <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
-                  </a>
+     <div class="seccion-productos">
+        <h2 class="titulo-seccion">✨ Productos Destacados ✨</h2>
+        
+        <div class="contenedor-productos"></div>
+    </div>
 
-                  <?php if(isset($producto['descuento']) && $producto['descuento'] > 0){ ?>
-                      <span class="badge-descuento">-<?php echo $producto['descuento']; ?>%</span>
-                  <?php } ?>
-
-                  <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
-
-                  <p class="precio">$<?php echo number_format($producto['precio'], 2, '.', ','); ?></p>
-                  
-                  <a href="carrito_accion.php?accion=agregar&id=<?php echo $producto['id']; ?>" class="btn-carrito" style="text-decoration: none; display: inline-block; text-align: center;">
-                       Agregar al carrito
-                  </a>
-              </div>
-          <?php
-              }
-          } else {
-              echo "<p>No hay productos cargados en la base de datos.</p>";
-          }
-          ?>
-          </section>
-      </div>
-<script src="productos.js"></script>
+    <script src="productos.js"></script>
    <!--   <div class="carrito-sidebar">
           <div class="carrito-header">
               <span class="carrito-titulo"><i class="fa-solid fa-cart-shopping" style="color: #d4428a;"></i> Mi Carrito</span>
