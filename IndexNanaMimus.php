@@ -166,7 +166,7 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
           ?>
           </section>
       </div>
-
+<script src="productos.js"></script>
       <div class="carrito-sidebar">
           <div class="carrito-header">
               <span class="carrito-titulo"><i class="fa-solid fa-cart-shopping" style="color: #d4428a;"></i> Mi Carrito</span>
