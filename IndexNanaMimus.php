@@ -1,48 +1,53 @@
 <?php
 include("conexion.php");
 
-// Simulamos el usuario logueado con ID 1 para las pruebas
+// Simulamos el usuario logueado con ID 1
 $usuario_id = 1; 
 
-// 1. Obtener tus productos de la DB (Tu código original)
+// 1. Obtener tus productos de la DB
 $sql = "SELECT * FROM productos";
 $resultado = $conexion->query($sql);
 
-// 2. Obtener los elementos del pedido actual para el Sidebar
-// Asumimos que un pedido actúa como carrito mientras su estado sea 'Pendiente'
+// 2. Obtener los elementos del pedido/carrito de forma segura desde tus tablas reales
 $carrito_items = [];
 $subtotal = 0;
 $items_totales = 0;
 
-// Buscamos si este usuario ya tiene un pedido "Pendiente" (abierto)
-$query_pedido_activo = "SELECT id FROM pedidos WHERE usuario_id = $usuario_id AND estado = 'Pendiente' LIMIT 1";
-$res_pedido = $conexion->query($query_pedido_activo);
+// Verificación de seguridad: Comprobamos si las tablas realmente existen antes de consultar
+$tabla_pedidos_existe = $conexion->query("SHOW TABLES LIKE 'pedidos'")->num_rows > 0;
+$tabla_detalle_existe = $conexion->query("SHOW TABLES LIKE 'detalle_pedido'")->num_rows > 0;
 
-if ($res_pedido && $res_pedido->num_rows > 0) {
-    $pedido = $res_pedido->fetch_assoc();
-    $pedido_id = $pedido['id'];
+if ($tabla_pedidos_existe && $tabla_detalle_existe) {
+    // Buscamos si este usuario ya tiene un pedido "Pendiente" (que actúa como carrito)
+    $query_pedido_activo = "SELECT id FROM pedidos WHERE usuario_id = $usuario_id AND estado = 'Pendiente' LIMIT 1";
+    $res_pedido = $conexion->query($query_pedido_activo);
 
-    // Si tiene un pedido activo, traemos sus productos desde la tabla detalle_pedido
-    $query_detalles = "SELECT dp.cantidad, p.id, p.nombre, p.precio, p.imagen 
-                       FROM detalle_pedido dp 
-                       JOIN productos p ON dp.producto_id = p.id 
-                       WHERE dp.pedido_id = $pedido_id";
-    
-    $resultado_carrito = $conexion->query($query_detalles);
+    if ($res_pedido && $res_pedido->num_rows > 0) {
+        $pedido = $res_pedido->fetch_assoc();
+        $pedido_id = $pedido['id'];
 
-    if ($resultado_carrito && $resultado_carrito->num_rows > 0) {
-        while ($fila = $resultado_carrito->fetch_assoc()) {
-            $carrito_items[] = $fila;
-            $subtotal += $fila['precio'] * $fila['cantidad'];
-            $items_totales += $fila['cantidad'];
+        // Traemos sus productos vinculados desde la tabla detalle_pedido
+        $query_detalles = "SELECT dp.cantidad, p.id, p.nombre, p.precio, p.imagen 
+                           FROM detalle_pedido dp 
+                           JOIN productos p ON dp.producto_id = p.id 
+                           WHERE dp.pedido_id = $pedido_id";
+        
+        $resultado_carrito = $conexion->query($query_detalles);
+
+        if ($resultado_carrito && $resultado_carrito->num_rows > 0) {
+            while ($fila = $resultado_carrito->fetch_assoc()) {
+                $carrito_items[] = $fila;
+                $subtotal += $fila['precio'] * $fila['cantidad'];
+                $items_totales += $fila['cantidad'];
+            }
         }
     }
 }
 
-// Configuración de envío basada en tu diseño de Figma
+// Parámetros de envío idénticos a tu Figma ($5.99 base, gratis a partir de $50.00)
 $costo_envio = 5.99;
 $meta_envio_gratis = 50.00;
-$envio_gratis = $subtotal >= $meta_envio_gratis;
+$envio_gratis = ($subtotal >= $meta_envio_gratis || $subtotal == 0);
 $total = $envio_gratis ? $subtotal : ($subtotal + $costo_envio);
 $cuanto_falta = $meta_envio_gratis - $subtotal;
 ?>
@@ -138,14 +143,14 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
           ?>
               <div class="producto-card">
                   <a href="producto.php?id=<?php echo $producto['id']; ?>">
-                      <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
+                      <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
                   </a>
 
                   <?php if(isset($producto['descuento']) && $producto['descuento'] > 0){ ?>
                       <span class="badge-descuento">-<?php echo $producto['descuento']; ?>%</span>
                   <?php } ?>
 
-                  <h3><?php echo $producto['nombre']; ?></h3>
+                  <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
 
                   <p class="precio">$<?php echo number_format($producto['precio'], 2, '.', ','); ?></p>
                   
@@ -156,7 +161,7 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
           <?php
               }
           } else {
-              echo "<p>No hay productos cargados.</p>";
+              echo "<p>No hay productos cargados en la base de datos.</p>";
           }
           ?>
           </section>
@@ -173,14 +178,14 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
                   <div class="carrito-vacio">
                       <div class="icono-vacio">🌸</div>
                       <p>Tu carrito está vacío</p>
-                      <a href="#" class="btn-finalizar" style="margin-top:15px; padding: 10px; font-size:14px; text-decoration:none; display:block;">Seguir comprando</a>
+                      <a href="#" class="btn-finalizar" style="margin-top:15px; padding: 10px; font-size:14px; text-decoration:none; display:block; text-align: center;">Seguir comprando</a>
                   </div>
               <?php else: ?>
                   <?php foreach ($carrito_items as $item): ?>
                       <div class="carrito-item">
-                          <img src="<?php echo $item['imagen']; ?>" alt="Miniatura">
+                          <img src="<?php echo htmlspecialchars($item['imagen']); ?>" alt="Miniatura">
                           <div class="item-detalles">
-                              <div class="item-nombre"><?php echo $item['nombre']; ?></div>
+                              <div class="item-nombre"><?php echo htmlspecialchars($item['nombre']); ?></div>
                               <div class="item-precio">$<?php echo number_format($item['precio'], 2, '.', ','); ?></div>
                               <div class="item-controles">
                                   <a href="carrito_accion.php?accion=restar&id=<?php echo $item['id']; ?>" class="btn-control">-</a>
@@ -198,10 +203,10 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
               <div class="carrito-footer">
                   <div class="linea-total">
                       <span>Envío:</span>
-                      <span style="font-weight: 500;"><?php echo $envio_gratis ? 'Gratis' : '$' . number_format($costo_envio, 2); ?></span>
+                      <span style="font-weight: 500 Freemium;"><?php echo $subtotal >= $meta_envio_gratis ? 'Gratis' : '$' . number_format($costo_envio, 2); ?></span>
                   </div>
                   
-                  <?php if (!$envio_gratis): ?>
+                  <?php if ($subtotal < $meta_envio_gratis): ?>
                       <div class="alerta-envio" style="font-size: 11px; color: #d4428a; text-align: center; margin: 8px 0;">
                           Agrega $<?php echo number_format($cuanto_falta, 2); ?> más para envío gratis ✨
                       </div>
@@ -220,7 +225,6 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
 
   </div> <footer class="footer">
     <div class="footer-content">
-      
       <div class="footer-section brand-info">
         <div class="brand-title">
           <span class="brand-logo-icon">✨</span>
@@ -255,7 +259,7 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
           <span class="day">Domingo</span> <span class="time closing">Cerrado</span>
         </div>
         <div class="info-badge highlight-badge">
-          <p>🚀 Envío gratis en compras mayores a $50000</p>
+          <p>🚀 Envío gratis en compras mayores a $50.00</p>
         </div>
       </div>
 
@@ -274,7 +278,6 @@ $cuanto_falta = $meta_envio_gratis - $subtotal;
           <p>Todos tus datos están protegidos con encriptación SSL</p>
         </div>
       </div>
-
     </div>
 
     <div class="footer-bottom">
