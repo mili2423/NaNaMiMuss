@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="producto-card">
                         <div class="producto-img-container">
                             ${badgeDescuento}
-                            <a href="producto.php?id=${productos.id}">
-                                <img src="${productos.imagen}" alt="${productos.nombre}">
+                            <a href="producto.php?id=${producto.id}">
+                                <img src="${producto.imagen}" alt="${producto.nombre}">
                             </a>
                         </div>
 
                         <div class="producto-info">
-                            <h3>${productos.nombre}</h3>
+                            <h3>${producto.nombre}</h3>
 
                             <div class="rating">
                                 ⭐ 4.9 <span class="resenas">(72 reseñas)</span>
