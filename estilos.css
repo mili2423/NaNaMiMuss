@@ -921,6 +921,83 @@ body {
     padding:10px 20px;
     border-radius:10px;
 }
+.contenedor-productos{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:30px;
+    padding:40px;
+}
+
+.producto-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.10);
+    transition:.3s;
+}
+
+.producto-card:hover{
+    transform:translateY(-5px);
+}
+
+.producto-img{
+    position:relative;
+}
+
+.producto-img img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    display:block;
+}
+
+.btn-favorito{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.producto-info{
+    padding:20px;
+}
+
+.producto-info h3{
+    font-size:28px;
+    margin-bottom:10px;
+    color:#333;
+}
+
+.rating{
+    color:#666;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.precio{
+    color:#ff3ca6;
+    font-size:35px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.btn-carrito{
+    width:100%;
+    border:none;
+    border-radius:15px;
+    padding:15px;
+    background:#ff3ca6;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    font-size:16px;
+}
 /* CARRUSEL DE IMÁGENES */
 .carousel {
   /* width: 84.5rem; Ancho del carrusel 30/10/25*/
