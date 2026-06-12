@@ -1,82 +1,301 @@
-/* --- FONDO OSCURO QUE CUBRE LA PÁGINA --- */
+/* ==========================================
+   CARRITO LATERAL ESTILO FIGMA (NANA MIMUS)
+   ========================================== */
+
+/* 1. EL FONDO OSCURO (Ocupa toda la pantalla) */
 .carrito-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente */
-    display: flex;
-    justify-content: center; /* Centra el pop-up horizontalmente */
-    align-items: center;     /* Centra el pop-up verticalmente */
-    z-index: 10000;          /* Por encima de la navfija y el carrusel */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.4) !important; /* Capa oscura translúcida */
+    display: flex !important;
+    justify-content: flex-end !important; /* Empuja el contenedor blanco a la derecha */
+    align-items: stretch !important;       /* Fuerza a que ocupe el 100% del alto */
+    z-index: 999999 !important;            /* Por encima de la navbar */
 }
 
-/* --- REGLA DE ORO PARA OCULTAR/MOSTRAR --- */
-.hidden {
+/* Regla para ocultar */
+.carrito-sidebar.hidden {
     display: none !important;
 }
 
-/* --- LA VENTANA BLANCA DEL POP-UP --- */
-.carrito-contenido, 
-.carrito-vacio {
-    background-color: #fff;
-    width: 440px;            /* Ancho idéntico al de tus capturas */
-    max-width: 90%;
-    max-height: 85vh;        /* Evita que se desborde si hay muchos artículos */
-    border-radius: 24px;     /* Esquinas redondeadas estéticas */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 30px 24px;
-    box-sizing: border-box;
-    animation: zoomEntrada 0.25s ease-out; /* Animación de escala */
+/* 2. EL CONTENEDOR BLANCO (Sidebar de Figma) */
+.popup-container {
+    background-color: #ffffff !important;
+    width: 440px !important;            /* Ancho exacto de tu diseño */
+    max-width: 100% !important;
+    height: 100vh !important;           /* 100% del alto de la pantalla */
+    box-shadow: -5px 0 35px rgba(0, 0, 0, 0.15) !important; /* Sombra hacia la izquierda */
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    animation: slideDerecha 0.3s ease-out;
 }
 
-/* Animación de entrada suave tipo pop */
-@keyframes zoomEntrada {
-    from { transform: scale(0.92); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+/* Animación de entrada suave desde la derecha */
+@keyframes slideDerecha {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
 }
 
-/* --- BOTÓN DE CERRAR (La 'X' superior derecha) --- */
+/* 3. ENCABEZADO (Fijo arriba) */
+.carrito-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 24px !important;
+    border-bottom: 1px solid #f9f9f9 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Título de Figma con tipografía Poppins */
+.carrito-header h2 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    color: #1e293b !important;
+    margin: 0 !important;
+}
+
+.badge {
+    background-color: #ffe6f2 !important;
+    color: #ff409f !important;
+    padding: 4px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Botón X de cerrar en la esquina */
 .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #888;
-    cursor: pointer;
-    z-index: 10;
+    background: none !important;
+    border: none !important;
+    font-size: 1.4rem !important;
+    cursor: pointer !important;
+    color: #94a3b8 !important;
     transition: color 0.2s;
 }
 .close-btn:hover {
-    color: #ff409f;
+    color: #ff409f !important;
 }
 
-/* Ajustes interiores para que la lista tenga scroll si es muy larga */
+/* 4. CONTENIDO CUANDO ESTÁ VACÍO */
+.carrito-vacio {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    padding: 40px 24px !important;
+    box-sizing: border-box !important;
+}
+
+.icon-bag {
+    background-color: #fff0f6 !important;
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.carrito-vacio p {
+    font-family: 'Poppins', sans-serif !important;
+    color: #64748b !important;
+    font-size: 1rem !important;
+    margin: 0 !important;
+}
+
+/* Botón Rosa "Seguir comprando" de Figma */
+.btn-seguir {
+    background-color: #ff409f !important;
+    color: #ffffff !important;
+    border: 2px solid #ff409f !important;
+    padding: 12px 40px !important;
+    border-radius: 25px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(255, 64, 159, 0.2) !important;
+}
+
+/* 5. CONTENIDO CON PRODUCTOS */
+.carrito-contenido {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    overflow: hidden !important; /* Evita que el contenedor total rompa el layout */
+}
+
+/* Área central con scroll para los productos */
 .lista-productos {
-    width: 100%;
-    overflow-y: auto;
-    max-height: 40vh;
-    margin-top: 15px;
-    padding-right: 5px;
+    padding: 24px !important;
+    overflow-y: auto !important;
+    flex: 1 !important;
 }
 
-/* Estilo para las tarjetas de productos dentro de tu pop-up */
+/* Tarjeta contenedora rosa claro de Figma */
 .producto-card {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    border: 1px solid #ffe6f2;
-    border-radius: 16px;
-    padding: 12px;
-    margin-bottom: 12px;
-    position: relative;
-    gap: 12px;
+    display: flex !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+    border: 1px solid #ffe6f2 !important; /* Borde rosa sutil de tu maqueta */
+    border-radius: 20px !important;       /* Bien redondeado */
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+    position: relative !important;
+    gap: 16px !important;
+}
+
+.producto-img {
+    width: 70px !important;
+    height: 70px !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
+}
+
+.producto-info h4 {
+    font-family: 'Poppins', sans-serif !important;
+    margin: 0 0 4px 0 !important;
+    font-size: 0.95rem !important;
+    color: #1e293b !important;
+    font-weight: 600 !important;
+}
+
+.producto-precio {
+    font-family: 'Poppins', sans-serif !important;
+    color: #ff409f !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    display: block !important;
+}
+
+/* Botones circulares de mas y menos */
+.controles-cantidad {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    margin-top: 8px !important;
+}
+
+.btn-qty {
+    border: 1px solid #ff409f !important;
+    background: white !important;
+    color: #ff409f !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.9rem !important;
+}
+
+.btn-qty:hover {
+    background-color: #ff409f !important;
+    color: white !important;
+}
+
+/* Icono de basurero */
+.btn-delete {
+    position: absolute !important;
+    top: 18px !important;
+    right: 20px !important;
+    background: none !important;
+    border: none !important;
+    color: #94a3b8 !important;
+    cursor: pointer !important;
+    font-size: 1rem !important;
+}
+.btn-delete:hover {
+    color: #ef4444 !important;
+}
+
+/* Precio total por fila a la derecha */
+.subtotal-item {
+    position: absolute !important;
+    bottom: 18px !important;
+    right: 20px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    color: #1e293b !important;
+}
+
+/* 6. BARRA INFERIOR DE TOTALES Y BOTÓN (Fija abajo) */
+.carrito-resumen {
+    padding: 24px !important;
+    border-top: 1px solid #f1f5f9 !important;
+    background-color: #ffffff !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+.resumen-fila {
+    display: flex !important;
+    justify-content: space-between !important;
+    font-family: 'Poppins', sans-serif !important;
+    color: #64748b !important;
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+}
+
+.alerta-envio {
+    font-family: 'Poppins', sans-serif !important;
+    color: #ff409f !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
+    margin: 10px 0 20px 0 !important;
+}
+
+.total-fila {
+    font-size: 1.3rem !important;
+    color: #1e293b !important;
+    font-weight: 700 !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px dashed #e2e8f0 !important;
+}
+
+/* Botón Finalizar Compra de Figma con degradado/sombra */
+.btn-finalizar {
+    width: 100% !important;
+    background-color: #ff409f !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 16px !important;
+    border-radius: 20px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(255, 64, 159, 0.3) !important;
+    transition: background 0.2s ;
+}
+.btn-finalizar:hover {
+    background-color: #e6358e !important;
+}
+
+.btn-vaciar {
+    background: none !important;
+    border: none !important;
+    color: #94a3b8 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+}
+.btn-vaciar:hover {
+    color: #ff409f !important;
 }
 /*EDITADo*/
 * {
