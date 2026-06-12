@@ -3,51 +3,33 @@ fetch("productos.php")
 .then(productos => {
 
     const contenedor = document.querySelector(".contenedor-productos");
+contenedor.innerHTML += `
+<div class="producto-card">
 
-    contenedor.innerHTML = "";
+    <a href="producto.php?id=${producto.id}">
+        <img src="${producto.imagen1}" alt="${producto.nombre}">
+    </a>
 
-    productos.forEach(producto => {
+    <div class="producto-info">
 
-        contenedor.innerHTML += `
-        
-        <div class="producto-card">
+        <h3>${producto.nombre}</h3>
 
-            <div class="producto-img">
-
-                <a href="producto.php?id=${producto.id}">
-                    <img src="${producto.imagen1}" alt="${producto.nombre}">
-                </a>
-
-                <button class="btn-favorito">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
-
-            </div>
-
-            <div class="producto-info">
-
-                <h3>${producto.nombre}</h3>
-
-                <div class="rating">
-                    ⭐ 4.9 <span>(72 reseñas)</span>
-                </div>
-
-                <p class="precio">
-                    $${Number(producto.precio).toLocaleString("es-AR")}
-                </p>
-
-                <button class="btn-carrito" onclick="window.location.href='producto.php?id=${producto.id}'">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    Agregar al carrito
-                </button>
-
-            </div>
-
+        <div class="rating">
+            ⭐ 4.9 (72 reseñas)
         </div>
-        
-        `;
 
-    });
+        <p class="precio">
+            $${Number(producto.precio).toLocaleString("es-AR")}
+        </p>
+
+        <button class="btn-carrito">
+            🛒 Agregar al carrito
+        </button>
+
+    </div>
+
+</div>
+`;
 
 })
 .catch(error => {
