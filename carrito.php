@@ -94,4 +94,31 @@ echo json_encode([
     'falta_para_envio_gratis' => $falta_para_envio_gratis
 ]);
 exit();
+// Insertamos la estructura en el contenedor del pop-up flotante
+            wrapper.innerHTML = `
+                <div class="carrito-contenido">
+                    <div class="lista-productos">
+                        ${tablaProductosHTML}
+                    </div>
+
+                    <div class="carrito-resumen">
+                        <div class="resumen-fila">
+                            <span>Envío</span>
+                            <span>${stringEnvio}</span>
+                        </div>
+                        
+                        <p class="alerta-envio">${stringAlertaEnvio}</p>
+                        
+                        <div class="resumen-fila total-fila">
+                            <strong>Total</strong>
+                            <strong>$${data.total.toFixed(2)}</strong>
+                        </div>
+
+                        <button class="btn-finalizar" onclick="alert('¡Compra Procesada con éxito!')">Finalizar Compra ✨</button>
+                        <div style="text-align: center; margin-top: 10px;">
+                            <button class="btn-vaciar" style="background:none; border:none; cursor:pointer;" onclick="ejecutarCarrito('vaciar')">Vaciar carrito</button>
+                        </div>
+                    </div>
+                </div>
+            `;
 ?>

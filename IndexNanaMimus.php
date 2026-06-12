@@ -42,20 +42,26 @@ $items_iniciales = $fila_cont['total'] ?? 0;
         <div class="navbar-right-container">
             <a href="preguntasfrecuentes.php" class="btn-ayuda">Ayuda</a>
             <div class="navbar-icons">
-                <div class="icon-container">
-                    <a href="#" onclick="toggleFavoritos()"><i class="fa-regular fa-heart"></i></a>
-                    <span class="badge-contador" id="contadorFavoritos">0</span>
-                </div>
+    <div class="icon-container">
+        <a href="#" onclick="toggleFavoritos()">
+            <i class="fa-regular fa-heart"></i>
+        </a>
+        <span class="badge-contador" id="contadorFavoritos">0</span>
+    </div>
 
-                <div class="icon-container">
-                    <a href="#" id="cart-icon-btn"><i class="fa-solid fa-cart-shopping"></i></a>
-                    <span class="badge-contador" id="contadorCarrito"><?php echo $items_iniciales; ?></span>
-                </div>
+    <div class="icon-container">
+        <a href="#" id="cart-icon-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+        <span class="badge-contador" id="contadorCarrito"><?php echo $items_iniciales; ?></span>
+    </div>
 
-                <div class="icon-container">
-                    <a href="iniciosesion.html"><i class="fa-regular fa-user"></i></a>
-                </div>
-            </div>
+    <div class="icon-container">
+        <a href="iniciosesion.html">
+            <i class="fa-regular fa-user"></i>
+        </a>
+    </div>
+</div>
         </div>
     </div>
   </div>
@@ -110,17 +116,10 @@ $items_iniciales = $fila_cont['total'] ?? 0;
   </div>
 
   <div class="carrito-sidebar hidden" id="sidebarCarrito">
-      <div class="carrito-header">
-          <div style="display: flex; align-items: center; gap: 10px;">
-              <span style="font-size: 1.3rem;">🛒</span>
-              <h2 style="margin: 0; font-size: 1.2rem; color: #333;">Mi Carrito</h2>
-              <span class="badge" id="cart-badge-count">0 items</span>
-          </div>
-          <button class="close-btn" id="close-cart-btn">&times;</button>
-      </div>
+    <button class="close-btn" id="close-cart-btn">&times;</button>
 
-      <div id="wrapper-dinamico-carrito" style="height: 100%; display: flex; flex-direction: column;"></div>
-  </div>
+    <div id="wrapper-dinamico-carrito" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
+</div>
 
   <script src="productos.js"></script>
   <script src="index.js"></script>

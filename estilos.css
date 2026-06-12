@@ -1,3 +1,83 @@
+/* --- FONDO OSCURO QUE CUBRE LA PÁGINA --- */
+.carrito-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente */
+    display: flex;
+    justify-content: center; /* Centra el pop-up horizontalmente */
+    align-items: center;     /* Centra el pop-up verticalmente */
+    z-index: 10000;          /* Por encima de la navfija y el carrusel */
+}
+
+/* --- REGLA DE ORO PARA OCULTAR/MOSTRAR --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- LA VENTANA BLANCA DEL POP-UP --- */
+.carrito-contenido, 
+.carrito-vacio {
+    background-color: #fff;
+    width: 440px;            /* Ancho idéntico al de tus capturas */
+    max-width: 90%;
+    max-height: 85vh;        /* Evita que se desborde si hay muchos artículos */
+    border-radius: 24px;     /* Esquinas redondeadas estéticas */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 30px 24px;
+    box-sizing: border-box;
+    animation: zoomEntrada 0.25s ease-out; /* Animación de escala */
+}
+
+/* Animación de entrada suave tipo pop */
+@keyframes zoomEntrada {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- BOTÓN DE CERRAR (La 'X' superior derecha) --- */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s;
+}
+.close-btn:hover {
+    color: #ff409f;
+}
+
+/* Ajustes interiores para que la lista tenga scroll si es muy larga */
+.lista-productos {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 40vh;
+    margin-top: 15px;
+    padding-right: 5px;
+}
+
+/* Estilo para las tarjetas de productos dentro de tu pop-up */
+.producto-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ffe6f2;
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    gap: 12px;
+}
 /*EDITADo*/
 * {
   margin: 0; /* Quita el margen por defecto */
